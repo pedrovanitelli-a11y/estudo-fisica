@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Física · 3º trimestre — estudo e prática</title>
+<style>
+:root{--ink:#16233b;--mut:#5b6880;--bg:#f3f6fb;--card:#fff;--pri:#1f5fd0;--pri2:#e7efff;--ok:#12805c;--okbg:#e3f6ee;--no:#c0392b;--nobg:#fdecea;--warn:#8a5a00;--warnbg:#fff5d9;--line:#dbe3ef;--r:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+header.bar{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff}
+.bar .in{max-width:920px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.logo{font-weight:800;letter-spacing:.2px;margin-right:auto}
+nav{display:flex;flex-wrap:wrap;gap:4px}
+nav button{font:inherit;font-size:14px;font-weight:600;color:#fff;background:transparent;border:0;padding:7px 10px;border-radius:999px;cursor:pointer;opacity:.8}
+nav button.on{background:#fff;color:var(--ink);opacity:1}
+main{max-width:920px;margin:0 auto;padding:16px 12px 70px}
+.view{display:none}.view.on{display:block;animation:f .2s}
+@keyframes f{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+h1{font-size:25px;line-height:1.2;margin:8px 0 6px}
+h2{font-size:20px;margin:22px 0 8px}
+h3{font-size:17px;margin:14px 0 6px}
+p{margin:8px 0}
+.sub{color:var(--mut);margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:12px 0}
+.hero{background:linear-gradient(135deg,#16233b,#1f5fd0);color:#fff;border-radius:18px;padding:22px 18px}
+.hero .sub{color:#d5e2ff}
+.tag{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;letter-spacing:.5px}
+.grid{display:grid;gap:10px}.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.btn{font:inherit;font-weight:700;border:0;border-radius:11px;padding:11px 16px;background:var(--pri);color:#fff;cursor:pointer}
+.btn.sec{background:var(--pri2);color:var(--pri)}
+.btn.sm{padding:7px 11px;font-size:14px}
+.btn.ok{background:var(--ok)}.btn.no{background:var(--no)}
+.btn:disabled{opacity:.5}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.steps li{counter-increment:s;position:relative;padding:6px 0 6px 38px}
+.steps li:before{content:counter(s);position:absolute;left:0;top:5px;width:27px;height:27px;border-radius:50%;background:var(--pri);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+.bar2{height:9px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:6px}
+.bar2 i{display:block;height:100%;background:var(--ok)}
+.fx{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:19px;white-space:nowrap}
+.frm{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:9px 0;border-top:1px dashed var(--line)}
+.frm:first-of-type{border-top:0}
+.frm .fx{font-weight:700;color:var(--pri);min-width:150px}
+.frm span{color:var(--mut);font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td,th{border:1px solid var(--line);padding:6px 8px;text-align:center}
+th{background:var(--pri2)}
+.scroll{overflow-x:auto}
+.warn{background:var(--warnbg);color:var(--warn);border-radius:11px;padding:10px 12px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;cursor:pointer}
+.chips button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:6px}
+.nums button{font:inherit;font-weight:700;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 0;cursor:pointer}
+.nums button.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.nums button.no{background:var(--nobg);border-color:var(--no);color:var(--no)}
+.nums button.mix{background:var(--warnbg);border-color:#d9a400;color:var(--warn)}
+.qh{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.qn{font-weight:800;color:var(--pri)}
+.stmt{font-size:17.5px}
+.fig{color:var(--mut);font-size:15px;border-left:3px solid var(--line);padding-left:10px;margin:8px 0}
+svg.graph{max-width:340px;width:100%;height:auto;display:block;margin:8px 0;background:#fff;border:1px solid var(--line);border-radius:10px}
+.item{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}
+.item .lt{font-weight:800;margin-right:4px}
+.ans{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ans input,.ans select{font:inherit;padding:10px;border:1.5px solid var(--line);border-radius:10px;background:#fff;min-width:0}
+.ans input{flex:1 1 130px}
+.ops{display:grid;gap:6px;margin:8px 0}
+.ops button{font:inherit;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 11px;cursor:pointer}
+.ops button.sel{border-color:var(--pri);background:var(--pri2)}
+.ops button.right{border-color:var(--ok);background:var(--okbg)}
+.ops button.wrong{border-color:var(--no);background:var(--nobg)}
+.fb{border-radius:10px;padding:9px 12px;margin:8px 0;font-weight:600}
+.fb.ok{background:var(--okbg);color:var(--ok)}.fb.no{background:var(--nobg);color:var(--no)}.fb.mid{background:var(--warnbg);color:var(--warn)}
+.res{margin-top:10px;border-radius:12px;border:1px solid #c9d6ea;overflow:hidden}
+.res .cad{padding:12px 14px;background:#fff;background-image:linear-gradient(#e8eef8 1px,transparent 1px),linear-gradient(90deg,#e8eef8 1px,transparent 1px);background-size:22px 22px}
+.res .cad .tt{font-size:12px;font-weight:800;letter-spacing:.6px;color:var(--mut);text-transform:uppercase;margin-bottom:4px}
+.res .ln{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:19px;padding:2px 0;overflow-wrap:anywhere}
+.res .ln.fin{display:inline-block;border:2px solid var(--ink);border-radius:6px;padding:2px 10px;font-weight:700;margin-top:4px;background:#fff}
+.res .why{background:#f7f9fd;border-top:1px solid #c9d6ea;padding:10px 14px;font-size:16px}
+.res .why b{color:var(--pri)}
+.self{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;border-top:1px solid #c9d6ea;background:#fff}
+.vid{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin:8px 0;background:#fff}
+.vid b{color:var(--pri)}.vid small{color:var(--mut);display:block}
+.foot{color:var(--mut);font-size:13px;text-align:center;margin-top:26px}
+@media (max-width:520px){body{font-size:16px}h1{font-size:22px}.frm .fx{min-width:0}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <div class="logo">Física · 3º tri</div>
+  <nav id="nav">
+    <button data-go="home" class="on">Início</button>
+    <button data-go="form">Fórmulas</button>
+    <button data-go="aula">Aprender</button>
+    <button data-go="prat">Praticar</button>
+    <button data-go="extra">Treino extra</button>
+    <button data-go="vid">Vídeos</button>
+  </nav>
+</div></header>
+<main>
+
+<section class="view on" id="v-home">
+  <div class="hero">
+    <span class="tag">1º ANO · ENSINO MÉDIO</span>
+    <h1>Física — 3º trimestre</h1>
+    <p class="sub">Todas as questões da apostila (15 a 111), resolvidas com as fórmulas e no formato que o professor pede.</p>
+    <div class="row"><button class="btn" data-go="prat" style="background:#fff;color:#16233b">Começar a praticar</button><button class="btn sec" data-go="form">Ver as fórmulas</button></div>
+  </div>
+  <h2>Como estudar aqui</h2>
+  <div class="card"><ol class="steps">
+    <li>Abra uma questão e <b>resolva no caderno</b>.</li>
+    <li>Se quiser, digite o resultado para o site conferir na hora.</li>
+    <li>Toque em <b>Ver resolução</b>: aparece a conta no formato do professor e uma explicação bem simples.</li>
+    <li>Marque se acertou ou errou. As que você errou ficam em vermelho para refazer.</li>
+  </ol></div>
+  <h2>Como o professor quer a resposta</h2>
+  <div class="card"><ol class="steps">
+    <li><b>Fórmula</b> — escreva a fórmula antes de qualquer número.</li>
+    <li><b>Substitui</b> — troque as letras pelos números do enunciado.</li>
+    <li><b>Faz a conta</b> — uma linha por passo.</li>
+    <li><b>Resultado no quadro, com unidade</b> — por exemplo: τ = 100 J.</li>
+  </ol>
+  <p class="warn">Vale usar qualquer fórmula que esteja na página de fórmulas do professor. Se você chegou ao mesmo resultado por outra fórmula da lista, está certo.</p></div>
+  <h2>Seu progresso</h2>
+  <div class="grid g3" id="prog"></div>
+  <p class="foot">Material de estudo para a turma. O progresso fica salvo só neste aparelho.</p>
+</section>
+
+<section class="view" id="v-form">
+  <h1>Fórmulas do professor</h1>
+  <p class="sub">São estas que valem na prova. Antes de cada matéria ele passa a lista; use as letras do jeito que estão aqui.</p>
+  <div id="forms"></div>
+  <h2>Tabela de seno, cosseno e tangente</h2>
+  <div class="card scroll"><table>
+    <tr><th></th><th>30°</th><th>45°</th><th>60°</th></tr>
+    <tr><th>sen</th><td>1/2</td><td>√2/2</td><td>√3/2</td></tr>
+    <tr><th>cos</th><td>√3/2</td><td>√2/2</td><td>1/2</td></tr>
+    <tr><th>tg</th><td>√3/3</td><td>1</td><td>√3</td></tr>
+  </table></div>
+  <div class="card scroll"><table>
+    <tr><th>Ângulo</th><th>0°</th><th>90°</th><th>180°</th><th>270°</th><th>360°</th></tr>
+    <tr><th>sen</th><td>0</td><td>1</td><td>0</td><td>−1</td><td>0</td></tr>
+    <tr><th>cos</th><td>1</td><td>0</td><td>−1</td><td>0</td><td>1</td></tr>
+  </table>
+  <p style="font-size:15px;color:var(--mut)">Também aparecem na apostila: cos 120° = −0,50 e cos 60° = 0,50.</p></div>
+  <h2>Áreas (para os gráficos)</h2>
+  <div class="card">
+    <div class="frm"><div class="fx">A = b · h</div><span>retângulo</span></div>
+    <div class="frm"><div class="fx">A = b · h / 2</div><span>triângulo</span></div>
+    <div class="frm"><div class="fx">A = (B + b) · h / 2</div><span>trapézio (B = base maior, b = base menor)</span></div>
+  </div>
+  <h2>Antes da conta: unidades</h2>
+  <div class="card">
+    <div class="frm"><div class="fx">g → kg</div><span>divide por 1000 (80 g = 0,08 kg)</span></div>
+    <div class="frm"><div class="fx">cm → m</div><span>divide por 100 (20 cm = 0,2 m)</span></div>
+    <div class="frm"><div class="fx">km/h → m/s</div><span>divide por 3,6 (72 km/h = 20 m/s)</span></div>
+  </div>
+</section>
+
+<section class="view" id="v-aula">
+  <h1>Aprender do zero</h1>
+  <p class="sub">Explicação simples de cada matéria, com um exemplo no formato do professor.</p>
+  <div class="chips" id="aulatabs"></div>
+  <div id="aulas"></div>
+</section>
+
+<section class="view" id="v-prat">
+  <h1>Praticar — questões da apostila</h1>
+  <div class="chips" id="capsel"></div>
+  <div class="card" id="numscard"><div class="row" style="justify-content:space-between"><b id="numstit"></b><button class="btn sec sm" id="soerr">Só as que errei</button></div><div class="nums" id="nums" style="margin-top:10px"></div>
+  <p style="font-size:14px;color:var(--mut);margin-bottom:0">Verde = acertei · Vermelho = errei · Amarelo = parte certa, parte errada</p></div>
+  <div id="qbox"></div>
+</section>
+
+<section class="view" id="v-extra">
+  <h1>Treino extra</h1>
+  <p class="sub">Questões novas, no mesmo estilo da apostila, com números diferentes a cada vez. Só usam as fórmulas do professor.</p>
+  <div class="chips" id="exsel"></div>
+  <div id="exbox"></div>
+  <div class="row"><button class="btn" id="exnew">Outra questão</button></div>
+</section>
+
+<section class="view" id="v-vid">
+  <h1>Vídeos</h1>
+  <p class="warn">Atenção: a matéria é a mesma, mas cada professor do YouTube escreve do seu jeito. Alguns usam T ou W no lugar de τ, e ΔS no lugar de d. <b>Na prova, use sempre as letras e as fórmulas do seu professor</b> (aba Fórmulas). Os links abrem no YouTube.</p>
+  <div id="vids"></div>
+</section>
+</main>
+
+<script>
+const CAPS = ["", "Trabalho e Potência", "Energia Mecânica", "Impulso e Quantidade de Movimento"];
+const Q = [];
+function q(n, c, t, it, fig, g) { Q.push({ n, c, t, it, fig: fig || "", g: g || null }); }
+// N = item de conta; M = item de alternativa; T = item de explicação
+function N(l, p, v, u, s, w, o) { return Object.assign({ k: "num", l, p, v, u, s, w }, o || {}); }
+function M(l, p, ops, g, s, w) { return { k: "mc", l, p, ops, g, s, w }; }
+function T(l, p, s, w) { return { k: "txt", l, p, s, w }; }
+const W = (F, d, c, r) => ["τ = F · d · cos α", `τ = ${F} · ${d} · ${c}`, `τ = ${r} J`];
+
+/* ================= CAPÍTULO 1 — TRABALHO E POTÊNCIA ================= */
+q(15, 1, "Determine o trabalho realizado pela força constante F = 20 N, que atua sobre um pequeno bloco que se desloca ao longo de um segmento de reta de extensão d = 5,0 m, nos casos indicados.", [
+  N("a", "F no mesmo sentido do deslocamento (α = 0°, cos 0° = 1,0)", 100, "J", W(20, 5, 1, 100), "A força empurra para o mesmo lado que o bloco anda. Ângulo 0°, cos 0° = 1. O trabalho é positivo: a força ajuda o movimento."),
+  N("b", "F no sentido contrário ao deslocamento (α = 180°, cos 180° = −1,0)", -100, "J", W(20, 5, "(−1)", "−100"), "A força aponta para trás e o bloco anda para a frente. cos 180° = −1, então o trabalho fica negativo: a força atrapalha o movimento."),
+  N("c", "F perpendicular ao deslocamento (α = 90°, cos 90° = 0)", 0, "J", W(20, 5, 0, 0), "Força de pé (90°) não ajuda nem atrapalha quem anda de lado. cos 90° = 0, então o trabalho é zero."),
+  N("d", "F fazendo 60° com o deslocamento (cos 60° = 0,50)", 50, "J", ["τ = F · d · cos α", "τ = 20 · 5 · 1/2", "τ = 50 J"], "Só uma parte da força puxa para a frente. O cos 60° = 0,5 mostra que metade da força trabalha."),
+  N("e", "F fazendo 120° com o deslocamento (cos 120° = −0,50)", -50, "J", ["τ = F · d · cos α", "τ = 20 · 5 · (−1/2)", "τ = −50 J"], "Ângulo maior que 90°: a força puxa um pouco para trás. Por isso o cosseno é negativo e o trabalho também."),
+], "Em todos os casos o bloco vai de A até B, para a direita. O que muda é o ângulo entre F e d.");
+q(16, 1, "Um pequeno bloco desliza num trilho reto, sem atrito, submetido à ação de uma força constante de intensidade F = 250 N. Calcule o trabalho desta força num deslocamento de 10 m, no mesmo sentido da força.", [
+  N("", "", 2500, "J", ["τ = F · d · cos α", "τ = 250 · 10 · cos 0°", "τ = 250 · 10 · 1", "τ = 2500 J"], "\"Mesmo sentido\" quer dizer ângulo 0°. cos 0° = 1. Aí é só multiplicar força por distância."),
+]);
+q(17, 1, "Uma força F, cuja intensidade é igual a 2,0 N, desloca de 5,0 m, num plano horizontal, um pequeno bloco. A força F faz um ângulo de 60° com o deslocamento. Qual o trabalho que F realiza? (cos 60° = 0,50)", [
+  N("", "", 5, "J", ["τ = F · d · cos α", "τ = 2 · 5 · cos 60°", "τ = 10 · 0,5", "τ = 5 J"], "A força está inclinada. Multiplica força, distância e o cosseno do ângulo que o enunciado deu."),
+]);
+q(18, 1, "Sob a ação de uma força constante de intensidade F = 200 N, um corpo desliza, sem atrito, na direção e no sentido da força atuante. Determine o trabalho da força num percurso de 5 m do corpo.", [
+  N("", "", 1000, "J", ["τ = F · d · cos α", "τ = 200 · 5 · cos 0°", "τ = 1000 · 1", "τ = 1000 J"], "Mesma direção e mesmo sentido: α = 0° e cos 0° = 1."),
+]);
+q(19, 1, "Determine o trabalho de cada força indicada na figura no deslocamento d = 10 m. (cos θ = 0,80)", [
+  N("FN", "Trabalho da normal FN = 40 N (para cima)", 0, "J", ["τ = F · d · cos α", "τ = 40 · 10 · cos 90°", "τ = 400 · 0", "τ = 0 J"], "A normal aponta para cima e o bloco anda de lado: 90°. Trabalho zero."),
+  N("Fat", "Trabalho do atrito Fat = 4,0 N (para trás)", -40, "J", ["τ = F · d · cos α", "τ = 4 · 10 · cos 180°", "τ = 40 · (−1)", "τ = −40 J"], "O atrito sempre aponta contra o movimento: 180°. Trabalho negativo."),
+  N("P", "Trabalho do peso P = 100 N (para baixo)", 0, "J", ["τ = F · d · cos α", "τ = 100 · 10 · cos 90°", "τ = 1000 · 0", "τ = 0 J"], "O peso aponta para baixo e o bloco anda de lado: 90°. Trabalho zero."),
+  N("F", "Trabalho de F = 100 N (inclinada de θ para cima)", 800, "J", ["τ = F · d · cos α", "τ = 100 · 10 · 0,80", "τ = 800 J"], "F está inclinada. Usa o cos θ que o enunciado deu (0,80)."),
+], "Bloco indo de A para B (para a direita). Forças: FN = 40 N para cima, P = 100 N para baixo, Fat = 4,0 N para a esquerda e F = 100 N inclinada de θ acima da horizontal, para a direita.");
+q(20, 1, "(Fund. Carlos Chagas-SP) Em uma das alternativas está representada uma força F, de intensidade constante, aplicada sobre um móvel. Em qual situação o trabalho realizado por essa força é igual a zero?", [
+  M("", "Ângulo entre F e o deslocamento d em cada alternativa:", ["90°", "225°", "180°", "0°", "45°"], 0, ["τ = F · d · cos α", "cos 90° = 0", "τ = 0 → alternativa a"], "O trabalho só zera quando o cosseno é zero. Isso acontece em 90°: força perpendicular ao deslocamento."),
+]);
+q(21, 1, "(UF-MG) Um bloco desloca-se sobre uma superfície horizontal, movendo-se da esquerda para a direita, sob a ação das forças indicadas na figura. Pode-se afirmar que:", [
+  M("", "", ["apenas as forças F e P realizam trabalho.", "apenas a força F realiza trabalho.", "apenas a força P realiza trabalho.", "apenas as forças F e Fa realizam trabalho.", "todas as forças realizam trabalho."], 3, ["FN e P: α = 90° → τ = 0", "F: α = 0° → τ positivo", "Fa: α = 180° → τ negativo", "Alternativa d"], "Só faz trabalho a força que está na linha do movimento. F (para a frente) e Fa (para trás) estão na horizontal. Normal e peso estão de pé, a 90°."),
+], "Forças no bloco: FN para cima, P para baixo, F para a direita e Fa (atrito) para a esquerda.");
+q(22, 1, "Determine o trabalho realizado pela força peso de um corpo de massa m = 20 kg, em um local onde a aceleração da gravidade é g = 10 m/s², nos seguintes deslocamentos:", [
+  N("a", "de A para B", 600, "J", ["P = m · g = 20 · 10 = 200 N", "τ = F · d · cos α", "τ = 200 · 3 · cos 0°", "τ = 600 J"], "O corpo desce 3 m. O peso aponta para baixo, mesmo sentido da descida: trabalho positivo."),
+  N("b", "de B para A", -600, "J", ["τ = F · d · cos α", "τ = 200 · 3 · cos 180°", "τ = 200 · 3 · (−1)", "τ = −600 J"], "O corpo sobe 3 m, mas o peso aponta para baixo. Sentidos opostos: trabalho negativo."),
+  N("c", "de A para C", 600, "J", ["Mesmo cálculo de A para B: o corpo desce 3 m", "τ = 200 · 3 · 1", "τ = 600 J"], "Para o peso só importa quanto o corpo subiu ou desceu, não o caminho. De A até C ele também desce 3 m."),
+  N("d", "de D para A", -600, "J", ["Mesmo cálculo de B para A: o corpo sobe 3 m", "τ = 200 · 3 · (−1)", "τ = −600 J"], "De D até A o corpo sobe 3 m. Subiu: trabalho do peso negativo."),
+  N("e", "de A para E", 0, "J", ["A e E estão na mesma altura", "τ = F · d · cos 90°", "τ = 0 J"], "A e E têm a mesma altura. O corpo só anda de lado, a 90° do peso. Trabalho zero."),
+], "A está 3,0 m acima da linha do chão, onde ficam B (logo abaixo de A), C e D. E está na mesma altura de A, 4,0 m à direita. AC = 5,0 m e AD = 8,0 m (medidos na diagonal).");
+q(23, 1, "Um ponto material de massa m = 2,0 kg é lançado a partir do solo, no ponto A, descrevendo a trajetória ABC (sobe até B, a h = 5,0 m, e volta ao solo em C). Determine o trabalho realizado pela força peso durante os deslocamentos. Considere g = 10 m/s².", [
+  N("a", "de A para B", -100, "J", ["P = m · g = 2 · 10 = 20 N", "τ = P · h · cos 180°", "τ = 20 · 5 · (−1)", "τ = −100 J"], "Na subida o peso aponta para baixo e o corpo vai para cima. Trabalho negativo."),
+  N("b", "de B para C", 100, "J", ["τ = P · h · cos 0°", "τ = 20 · 5 · 1", "τ = 100 J"], "Na descida o peso e o movimento vertical têm o mesmo sentido. Trabalho positivo."),
+  N("c", "de A para C", 0, "J", ["τ = τ(AB) + τ(BC)", "τ = −100 + 100", "τ = 0 J"], "A e C estão na mesma altura (o solo). O que o peso tirou na subida, devolveu na descida."),
+]);
+q(24, 1, "Um corpo de massa m = 2 kg é lançado horizontalmente a partir do ponto A, passando sucessivamente pelos pontos B, C e D (no solo). Sabendo que g = 10 m/s², determine o trabalho realizado pela força peso entre os pontos:", [
+  N("a", "A e B", 20, "J", ["P = m · g = 2 · 10 = 20 N", "τ = P · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De A (4 m) até B (3 m) o corpo desce 1 m. Usa só o quanto desceu."),
+  N("b", "B e C", 20, "J", ["τ = P · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De B (3 m) até C (2 m) desce 1 m."),
+  N("c", "C e D", 40, "J", ["τ = P · d · cos α", "τ = 20 · 2 · 1", "τ = 40 J"], "De C (2 m) até D (solo) desce 2 m."),
+  N("d", "A e D", 80, "J", ["τ = P · d · cos α", "τ = 20 · 4 · 1", "τ = 80 J"], "De A até o solo desce 4 m. Também dá para somar: 20 + 20 + 40."),
+], "Alturas em relação ao solo: A = 4 m, B = 3 m, C = 2 m, D = 0.");
+q(25, 1, "Uma força F atua sobre um corpo na mesma direção e no mesmo sentido do deslocamento. O gráfico mostra a intensidade de F em função da posição s. Determine o trabalho realizado pela força F quando o corpo sofre um deslocamento de s = 0 até s = 10 m e, em seguida, de s = 10 m até s = 20 m.", [
+  N("1", "de s = 0 até s = 10 m", 100, "J", ["τ ≙ área (F × d)", "τ = b · h (retângulo)", "τ = 10 · 10", "τ = 100 J"], "Quando tem gráfico de força por distância, o trabalho é a área embaixo da linha. De 0 a 10 m é um retângulo."),
+  N("2", "de s = 10 m até s = 20 m", 150, "J", ["τ ≙ área (F × d)", "τ = (B + b) · h / 2 (trapézio)", "τ = (20 + 10) · 10 / 2", "τ = 150 J"], "De 10 a 20 m a força cresce de 10 N para 20 N. A figura é um trapézio."),
+], "", { xl: "s (m)", yl: "F (N)", p: [[0, 10], [10, 10], [20, 20]], xt: [0, 10, 20], yt: [10, 20] });
+q(26, 1, "Uma força de intensidade 10 N é aplicada a um corpo, provocando um deslocamento de 2,0 m na mesma direção e no mesmo sentido da força, durante 5,0 s. Determine:", [
+  N("a", "o trabalho realizado pela força", 20, "J", ["τ = F · d · cos α", "τ = 10 · 2 · cos 0°", "τ = 20 J"], "Mesmo sentido: cos 0° = 1."),
+  N("b", "a potência média dessa força", 4, "W", ["P = τ / Δt", "P = 20 / 5", "P = 4 W"], "Potência é o trabalho dividido pelo tempo: quanto trabalho por segundo."),
+]);
+q(27, 1, "Um automóvel desloca-se em um trecho horizontal com velocidade constante de 20 m/s, embora esteja sujeito a uma força resistiva total de 800 N, contrária ao movimento. Qual deve ser a potência da força motora para manter o automóvel em movimento?", [
+  N("", "", 16000, "W", ["P = F · v · cos α", "P = 800 · 20 · 1", "P = 16000 W"], "Velocidade constante: o motor faz exatamente a mesma força que a resistência (800 N). Com força e velocidade, usa P = F · v."),
+]);
+q(28, 1, "O gráfico apresenta a variação da potência P de uma força F, que atua sobre um corpo na direção de seu movimento. Determine o trabalho realizado por essa força nos intervalos de tempo:", [
+  N("a", "de 0 a 10 s", 300, "J", ["τ ≙ área (P × Δt)", "τ = b · h / 2 (triângulo)", "τ = 10 · 60 / 2", "τ = 300 J"], "Gráfico de potência por tempo: a área dá o trabalho. De 0 a 10 s é um triângulo."),
+  N("b", "de 10 a 20 s", 600, "J", ["τ = b · h (retângulo)", "τ = 10 · 60", "τ = 600 J"], "De 10 a 20 s a potência fica parada em 60 W: retângulo."),
+  N("c", "de 0 a 20 s", 900, "J", ["τ total = τ₁ + τ₂", "τ = 300 + 600", "τ = 900 J"], "É só somar os dois pedaços."),
+], "", { xl: "t (s)", yl: "P (W)", p: [[0, 0], [10, 60], [20, 60]], xt: [0, 10, 20], yt: [60] });
+q(29, 1, "Um motor é empregado para elevar um bloco de massa 5,0 · 10² kg até uma altura de 3,0 m, em 2,0 s, com movimento retilíneo uniforme. Considerando g = 10 m/s², determine a potência teórica do motor.", [
+  N("", "", 7500, "W", ["Fm = P = m · g = 5 · 10² · 10 = 5000 N", "τ = F · d · cos α = 5000 · 3 · 1 = 15000 J", "τ = P · Δt", "15000 = P · 2", "P = 7500 W"], "Movimento uniforme: a força do motor é igual ao peso. Primeiro acha o trabalho para subir 3 m, depois divide pelo tempo. Pode responder 7500 W, 7,5 · 10³ W ou 7,5 kW."),
+]);
+q(30, 1, "Utilizando uma corda e uma polia, uma pessoa ergue um bloco de massa 20 kg com velocidade constante de 2,0 · 10⁻¹ m/s. Sabendo que g = 10 m/s², determine a potência da força desenvolvida pela pessoa.", [
+  N("", "", 40, "W", ["F = P = m · g = 20 · 10 = 200 N", "P = F · v · cos α", "P = 200 · 2 · 10⁻¹ · 1", "P = 40 W"], "Velocidade constante: a pessoa puxa com força igual ao peso (200 N). 2,0 · 10⁻¹ é 0,2 m/s."),
+]);
+q(31, 1, "Um corpo sobe um plano inclinado, sem atrito, sendo puxado por uma força F paralela ao plano. A potência da força F varia com o tempo conforme o gráfico. Determine o trabalho realizado pela força F durante os dois primeiros segundos do movimento.", [
+  N("", "", 75, "J", ["τ ≙ área (P × Δt)", "τ = (B + b) · h / 2 (trapézio)", "τ = (2 + 1) · 50 / 2", "τ = 75 J"], "A área embaixo do gráfico de potência é o trabalho. A figura é um trapézio: base maior 2, base menor 1, altura 50."),
+], "", { xl: "t (s)", yl: "P (W)", p: [[0, 50], [1, 50], [2, 0]], xt: [0, 1, 2], yt: [50] });
+
+/* ================= CAPÍTULO 2 — ENERGIA MECÂNICA ================= */
+q(32, 2, "Quando um corpo se desloca sobre uma superfície horizontal rugosa, parte de sua energia cinética é transformada em energia térmica. Se inicialmente o corpo possui 100 J de energia cinética e, após o deslocamento, passa a possuir apenas 70 J, determine a quantidade de energia cinética que foi convertida em energia térmica.", [
+  N("", "", 30, "J", ["Em = Em₀", "Ec + ET = Ec₀", "70 + ET = 100", "ET = 100 − 70", "ET = 30 J"], "A energia não some. O que faltou na energia cinética (100 − 70) virou calor."),
+]);
+q(33, 2, "Uma pedra de massa 2,0 kg possui, em determinado instante, velocidade de 5,0 m/s. Calcule a sua energia cinética nesse instante.", [
+  N("", "", 25, "J", ["Ec = m · v² / 2", "Ec = 2 · 5² / 2", "Ec = 50 / 2", "Ec = 25 J"], "Energia cinética é a energia de quem está se movendo. Primeiro eleva a velocidade ao quadrado, depois multiplica pela massa e divide por 2."),
+]);
+q(34, 2, "O gráfico apresenta a variação da velocidade, em função do tempo, de um veículo de massa 1000 kg. Determine a variação da energia cinética do veículo entre os instantes 10 s e 20 s.", [
+  N("", "", 96000, "J", ["ΔEc = Ec − Ec₀", "ΔEc = m · v² / 2 − m · v₀² / 2", "ΔEc = 1000 · 16² / 2 − 1000 · 8² / 2", "ΔEc = 128000 − 32000", "ΔEc = 96000 J"], "Lê no gráfico: em 10 s a velocidade é 8 m/s; em 20 s é 16 m/s. Calcula a energia cinética nos dois instantes e faz final menos inicial. Também vale 96 kJ."),
+], "", { xl: "t (s)", yl: "v (m/s)", p: [[0, 8], [10, 8], [20, 16], [30, 16]], xt: [0, 10, 20, 30], yt: [8, 16] });
+q(35, 2, "Qual é o trabalho realizado pela força resultante que atua sobre um corpo de massa 0,50 kg, cuja velocidade varia de 3,0 m/s para 5,0 m/s?", [
+  N("", "", 4, "J", ["τ = ΔEc", "τ = m · v² / 2 − m · v₀² / 2", "τ = 0,5 · 5² / 2 − 0,5 · 3² / 2", "τ = 6,25 − 2,25", "τ = 4 J"], "O trabalho da força resultante é igual a quanto a energia cinética mudou: final menos inicial."),
+]);
+q(36, 2, "Um corpo possui energia cinética igual a 2500 J e massa de 500 g. Determine a velocidade desse corpo.", [
+  N("", "", 100, "m/s", ["m = 500 g = 0,5 kg", "Ec = m · v² / 2", "2500 = 0,5 · v² / 2", "v² = 2500 · 2 / 0,5", "v² = 10000", "v = 100 m/s"], "Cuidado: a massa tem que estar em kg (500 g = 0,5 kg). Depois isola o v² e tira a raiz."),
+]);
+q(37, 2, "Um automóvel de massa 900 kg, movendo-se a 72 km/h, colide com um poste. Determine o trabalho realizado pela força resultante que atuou sobre o carro até que ele parasse.", [
+  N("", "", -180000, "J", ["v₀ = 72 km/h ÷ 3,6 = 20 m/s", "τ = ΔEc", "τ = m · v² / 2 − m · v₀² / 2", "τ = 0 − 900 · 20² / 2", "τ = −180000 J"], "Pegadinha: a velocidade tem que estar em m/s (72 ÷ 3,6 = 20). O carro para, então a energia cinética final é zero. O trabalho é negativo porque a força freou o carro. Também vale −1,8 · 10⁵ J.", { e: { "-2332800": "Você usou 72 direto. Antes, passe de km/h para m/s: 72 ÷ 3,6 = 20 m/s.", "2332800": "Você usou 72 direto. Antes, passe de km/h para m/s: 72 ÷ 3,6 = 20 m/s." } }),
+]);
+q(38, 2, "Um corpo de massa 80 g, inicialmente em repouso, fica sujeito à ação de uma força resultante F. Determine a velocidade do corpo quando essa força tiver realizado um trabalho de 4,0 J.", [
+  N("", "", 10, "m/s", ["m = 80 g = 0,08 kg", "τ = ΔEc", "4 = m · v² / 2 − 0", "4 = 0,08 · v² / 2", "v² = 100", "v = 10 m/s"], "O corpo sai do repouso, então todo o trabalho vira energia cinética. A massa precisa estar em kg: 80 g = 0,08 kg."),
+]);
+q(39, 2, "Qual é a variação da energia potencial gravitacional de uma pessoa de massa 80 kg ao subir do solo até uma altura de 30 m? Considere g = 10 m/s².", [
+  N("", "", 24000, "J", ["ΔEp = Ep − Ep₀", "ΔEp = m · g · h − m · g · h₀", "ΔEp = 80 · 10 · 30 − 80 · 10 · 0", "ΔEp = 24000 − 0", "ΔEp = 24000 J"], "Energia potencial é a energia da altura. No solo vale zero. Lá em cima vale m · g · h. Também vale 24 kJ."),
+]);
+q(40, 2, "(UNIRIO-RJ) Quando a velocidade escalar de um móvel de massa constante dobra, o que acontece com sua energia cinética?", [
+  M("", "", ["reduz-se a um quarto do valor inicial.", "reduz-se à metade.", "passa a ser multiplicada por √2.", "duplica.", "quadruplica."], 4, ["Ec₀ = m · v² / 2", "Ec = m · (2v)² / 2", "Ec = 4 · m · v² / 2", "Ec = 4 · Ec₀ → alternativa e"], "Na fórmula a velocidade está ao quadrado. Se a velocidade dobra, 2² = 4: a energia fica 4 vezes maior."),
+]);
+q(41, 2, "Um corpo de massa 5,0 kg é lançado verticalmente para cima com velocidade inicial de 10 m/s. Despreze a resistência do ar e considere g = 10 m/s². Determine:", [
+  N("a", "a energia cinética do corpo no instante do lançamento", 250, "J", ["Ec = m · v² / 2", "Ec = 5 · 10² / 2", "Ec = 250 J"], "No lançamento ele só tem energia de movimento."),
+  N("b", "a energia potencial gravitacional, em relação ao solo, quando o corpo atingir a altura máxima", 250, "J", ["Em = Em₀", "Ep = Ec₀", "Ep = 250 J"], "No ponto mais alto o corpo para por um instante. Toda a energia cinética do começo virou energia potencial."),
+  N("c", "a altura máxima alcançada", 5, "m", ["Ep = m · g · h", "250 = 5 · 10 · h", "h = 250 / 50", "h = 5 m"], "Com a energia potencial lá em cima, é só isolar o h."),
+]);
+q(42, 2, "Um bloco de massa 5,0 kg está sobre uma mesa no 2º andar de uma casa, a 1,0 m acima do piso superior. O piso superior fica 2,5 m acima do nível da rua. Adote g = 10 m/s². Determine:", [
+  N("a", "a energia potencial gravitacional do bloco em relação ao piso da sala", 50, "J", ["Ep = m · g · h", "Ep = 5 · 10 · 1", "Ep = 50 J"], "Em relação ao piso da sala, a altura é só a da mesa: 1,0 m."),
+  N("b", "a energia potencial gravitacional do bloco em relação ao nível da rua", 175, "J", ["h = 2,5 + 1,0 = 3,5 m", "Ep = m · g · h", "Ep = 5 · 10 · 3,5", "Ep = 175 J"], "Em relação à rua, soma as duas alturas: 2,5 + 1,0 = 3,5 m."),
+  N("c", "a variação da energia potencial gravitacional do bloco ao ser transportado da posição em que se encontra até o nível da rua", -175, "J", ["ΔEp = Ep − Ep₀", "ΔEp = 0 − 175", "ΔEp = −175 J"], "No nível da rua a altura é zero, então a energia potencial final é zero. O bloco desceu: a variação é negativa."),
+]);
+q(43, 2, "Um corpo é abandonado de uma altura de 5,0 m, em um local onde a aceleração da gravidade vale g = 10 m/s². Desprezando a resistência do ar, determine a velocidade do corpo ao atingir o solo.", [
+  N("", "", 10, "m/s", ["Em = Em₀", "Ec = Ep₀", "m · v² / 2 = m · g · h", "v² / 2 = 10 · 5", "v² = 100", "v = 10 m/s"], "Lá em cima só tem energia de altura. Embaixo só tem energia de movimento. As duas são iguais. A massa aparece dos dois lados, então corta."),
+]);
+q(44, 2, "Um corpo de massa 3,0 kg é abandonado do repouso e atinge o solo com velocidade de 40 m/s. Considerando desprezível a resistência do ar e g = 10 m/s², determine:", [
+  N("a", "a energia potencial gravitacional do corpo no instante inicial, em relação ao solo", 2400, "J", ["Em = Em₀", "Ep₀ = Ec", "Ep₀ = m · v² / 2", "Ep₀ = 3 · 40² / 2", "Ep₀ = 2400 J"], "A energia de altura do começo é igual à energia de movimento do final. 40² = 1600; 3 · 1600 / 2 = 2400.", { e: { "2100": "Confira a conta: 40² = 1600 e 3 · 1600 / 2 = 2400." } }),
+  N("b", "a altura da qual o corpo foi abandonado", 80, "m", ["Ep = m · g · h", "2400 = 3 · 10 · h", "h = 2400 / 30", "h = 80 m"], "Com a energia potencial do item a, isola o h."),
+]);
+q(45, 2, "A uma altura de 20 m, um corpo em repouso possui, em relação ao solo, energia potencial gravitacional igual a 20 J. Admitindo que o campo gravitacional seja conservativo, determine a energia cinética do corpo quando ele estiver a 10 m de altura.", [
+  N("", "", 10, "J", ["Em = Em₀", "Ec + Ep = Ep₀", "Ep (10 m) = metade de 20 J = 10 J", "Ec + 10 = 20", "Ec = 10 J"], "Na metade da altura, a energia potencial é a metade (10 J). O que falta para os 20 J do começo virou energia cinética."),
+]);
+q(46, 2, "Uma mola helicoidal é tracionada por uma força de intensidade 4,0 · 10² N, sofrendo uma deformação elástica de 4,0 cm. Qual é a energia potencial elástica armazenada nessa mola quando sua deformação for de 2,0 cm?", [
+  N("", "", 2, "J", ["x = 4 cm = 0,04 m", "Fe = k · x", "4 · 10² = k · 0,04", "k = 10000 N/m", "Epe = k · x² / 2", "Epe = 10000 · (0,02)² / 2", "Epe = 2 J"], "Duas etapas. Primeiro descobre o k da mola com Fe = k · x. Depois usa o k na energia elástica com a nova deformação. Sempre passe cm para m."),
+]);
+q(47, 2, "Um corpo está preso à extremidade livre de uma mola helicoidal de constante elástica k = 8,0 · 10² N/m. Determine a energia potencial elástica armazenada pelo sistema quando a mola estiver distendida de 10 cm.", [
+  N("", "", 4, "J", ["x = 10 cm = 0,1 m", "Epe = k · x² / 2", "Epe = 8 · 10² · (0,1)² / 2", "Epe = 800 · 0,01 / 2", "Epe = 4 J"], "Mola esticada guarda energia. Passe 10 cm para 0,1 m antes de elevar ao quadrado."),
+]);
+q(48, 2, "Considerando a situação do exercício anterior (k = 8,0 · 10² N/m), qual deve ser a deformação da mola para que a energia potencial elástica armazenada seja igual a 16 J?", [
+  N("", "", 0.2, "m", ["Epe = k · x² / 2", "16 = 8 · 10² · x² / 2", "16 = 400 · x²", "x² = 0,04", "x = 0,2 m (20 cm)"], "Agora a energia é dada e a deformação é a pergunta. Isola o x² e tira a raiz. 0,2 m é o mesmo que 20 cm."),
+]);
+q(49, 2, "Uma força de intensidade 2,0 · 10² N provoca uma deformação de 5,0 cm em uma mola helicoidal. Qual é a energia potencial elástica armazenada pela mola quando ela estiver deformada de 20 cm?", [
+  N("", "", 80, "J", ["Fe = k · x", "2 · 10² = k · 0,05", "k = 4000 N/m", "Epe = k · x² / 2", "Epe = 4000 · (0,2)² / 2", "Epe = 4000 · 0,04 / 2", "Epe = 80 J"], "Primeiro acha o k (200 N para 0,05 m). Depois calcula a energia com 20 cm = 0,2 m.", { e: { "2000": "Faltou achar o k (k = F / x = 4000 N/m) e passar 20 cm para 0,2 m." } }),
+]);
+q(50, 2, "Um pequeno veículo está preso à extremidade livre de uma mola de constante elástica k = 5,0 · 10² N/m. Determine a energia potencial elástica armazenada pelo sistema quando a mola for distendida de 5,0 cm.", [
+  N("", "", 0.625, "J", ["x = 5 cm = 0,05 m", "Epe = k · x² / 2", "Epe = 5 · 10² · (0,05)² / 2", "Epe = 500 · 0,0025 / 2", "Epe = 0,625 J"], "O erro mais comum é esquecer de passar cm para m e de elevar ao quadrado. 0,05² = 0,0025.", { e: { "1250": "Você usou 5 em vez de 0,05 m e não elevou ao quadrado." } }),
+]);
+q(51, 2, "Sob a ação exclusiva de forças conservativas, a energia cinética de um móvel aumenta 50 J. Nesse mesmo intervalo, qual é a variação da energia potencial do móvel? O que acontece com a energia mecânica do móvel?", [
+  N("", "Variação da energia potencial", -50, "J", ["Em = Em₀", "Ep + Ec = Ep₀ + Ec₀", "Ep + Ec₀ + 50 = Ep₀ + Ec₀", "Ep − Ep₀ = −50", "ΔEp = −50 J", "A energia mecânica permanece constante."], "Só com forças conservativas, a energia mecânica total não muda. Se a cinética ganhou 50 J, a potencial perdeu 50 J."),
+]);
+q(52, 2, "Uma pedra é lançada verticalmente para cima. Desprezando a resistência do ar, explique o que ocorre com as energias cinética, potencial e mecânica da pedra até que ela retorne ao ponto de lançamento.", [
+  T("", "", ["Subida: a energia cinética diminui e a energia potencial aumenta.", "Ponto mais alto: Ec = 0 e Ep é máxima.", "Descida: a energia potencial diminui e a energia cinética aumenta.", "A energia mecânica é constante o tempo todo, pois não existem forças dissipativas."], "Pense numa troca: subindo, a pedra perde velocidade e ganha altura. Descendo, é o contrário. A soma das duas (energia mecânica) nunca muda, porque não tem ar atrapalhando."),
+]);
+q(53, 2, "O princípio da conservação da energia mecânica pode ser aplicado a um bloco que desce um plano inclinado com atrito? Justifique sua resposta.", [
+  T("", "", ["Não pode.", "O atrito é uma força dissipativa.", "Parte da energia mecânica é transformada em energia térmica, então a energia mecânica diminui."], "Conservação só vale sem forças dissipativas. O atrito \"rouba\" energia e transforma em calor."),
+]);
+q(54, 2, "Analise a afirmação: \"Uma esfera é lançada verticalmente para cima e sofre a ação de seu peso e da resistência do ar, retornando ao ponto de partida com velocidade de módulo menor que o da velocidade de lançamento.\" Essa afirmação está correta ou incorreta? Justifique utilizando os conceitos de energia.", [
+  T("", "", ["Correta.", "A resistência do ar é uma força dissipativa: o sistema não é conservativo.", "A esfera perde energia mecânica. Na volta, na mesma altura, tem menos energia cinética, logo menor velocidade."], "O ar tira energia da esfera na subida e na descida. Ela volta ao mesmo lugar com menos energia de movimento, ou seja, mais devagar."),
+]);
+q(55, 2, "Quando um corpo está sujeito apenas à ação de forças conservativas:", [
+  M("", "", ["sua energia cinética aumenta.", "sua energia potencial aumenta.", "sua energia potencial diminui.", "sua energia cinética diminui.", "permanece constante a soma da energia cinética com a energia potencial."], 4, ["Em = Em₀", "Ec + Ep = constante → alternativa e"], "Cada energia sozinha pode subir ou descer. O que nunca muda é a soma das duas."),
+]);
+q(56, 2, "(PUC-SP) Um corpo é abandonado de um ponto situado a uma altura h = 100 m em relação ao solo. Com base nessa situação, pode-se afirmar que:", [
+  M("", "", ["a energia cinética é máxima no ponto de maior altura.", "após descer 50 m, a energia cinética torna-se igual à energia potencial.", "ao atingir o solo, a energia cinética é igual à energia potencial.", "no instante em que atinge o solo, a energia potencial é máxima.", "no ponto de altura máxima, a energia potencial é o dobro da energia cinética."], 1, ["Em = Em₀", "A 50 m (metade da altura): Ep = metade da energia total", "A outra metade virou Ec → Ec = Ep → alternativa b"], "Na metade do caminho, metade da energia de altura já virou energia de movimento. As duas ficam iguais."),
+]);
+q(57, 2, "(FUVEST-SP) Um ciclista desce uma ladeira enfrentando um forte vento contrário ao seu movimento. Pedalando intensamente, consegue manter a velocidade constante. Nessas condições, pode-se concluir que sua:", [
+  M("", "", ["energia cinética está aumentando.", "energia cinética está diminuindo.", "energia potencial gravitacional está aumentando.", "energia potencial gravitacional está diminuindo.", "energia potencial gravitacional é constante."], 3, ["v constante → Ec constante", "Está descendo → h diminui → Ep = m · g · h diminui", "Alternativa d"], "Velocidade igual: energia cinética não muda. Ele está descendo: a altura diminui, então a energia potencial diminui."),
+]);
+q(58, 2, "Uma esfera presa a um fio é lançada horizontalmente com velocidade de 2,0 m/s a partir do ponto A (o ponto mais baixo). Desprezando a resistência do ar e adotando g = 10 m/s², determine a altura máxima atingida pela esfera.", [
+  N("", "", 0.2, "m", ["Em = Em₀", "Ep(B) = Ec(A)", "m · g · h = m · v² / 2", "10 · h = 2² / 2", "10 · h = 2", "h = 0,2 m"], "Embaixo só tem energia de movimento. No ponto mais alto ela vira toda energia de altura. A massa corta."),
+]);
+q(59, 2, "Um corpo de massa m = 5,0 kg é abandonado, sem velocidade inicial, do ponto A de uma calha circular de raio r = 10 m. O ponto B é o ponto mais baixo da calha. Desprezando o atrito e a resistência do ar e considerando g = 10 m/s², determine:", [
+  N("a", "a energia cinética do corpo no ponto B", 500, "J", ["Em = Em₀", "Ec = Ep₀", "Ec = m · g · h", "Ec = 5 · 10 · 10", "Ec = 500 J"], "A está na altura do raio (10 m) acima de B. Toda a energia de altura vira energia de movimento em B."),
+  N("b", "a velocidade com que o corpo chega ao ponto B", 14.142, "m/s", ["Ec = m · v² / 2", "500 = 5 · v² / 2", "v² = 200", "v = √200 = √(2 · 100)", "v = 10√2 m/s (≈ 14,1 m/s)"], "Com a energia cinética, isola o v. √200 não é exata: fatorando, fica 10√2."),
+]);
+q(60, 2, "No escorregador representado na figura (altura H = 3,2 m), um menino de 30 kg parte do ponto A (topo). Admitindo que as perdas de energia sejam desprezíveis e considerando g = 10 m/s², determine a velocidade do menino ao atingir o ponto B (base).", [
+  N("", "", 8, "m/s", ["Em = Em₀", "Ec(B) = Ep(A)", "m · v² / 2 = m · g · h", "30 · v² / 2 = 30 · 10 · 3,2", "15 · v² = 960", "v² = 64", "v = 8 m/s"], "No topo, só energia de altura. Na base, só energia de movimento. 960 ÷ 15 = 64 e √64 = 8."),
+]);
+q(61, 2, "Em uma montanha-russa, um carro parte do repouso no ponto A (hA = 20 m) e desloca-se até o ponto C (hC = 15 m) sem atrito e sem resistência do ar, passando pelo ponto B (no nível do solo). Determine as velocidades do carro nos pontos B e C. Adote g = 10 m/s².", [
+  N("B", "velocidade no ponto B", 20, "m/s", ["Em = Em₀", "Ec(B) = Ep(A)", "m · v² / 2 = m · g · h", "v² / 2 = 10 · 20", "v² = 400", "vB = 20 m/s"], "De A até B o carro desce os 20 m inteiros. Toda a energia de altura vira movimento."),
+  N("C", "velocidade no ponto C", 10, "m/s", ["Em(B) = Em(C)", "Ec(B) = Ep(C) + Ec(C)", "20² / 2 = 10 · 15 + vC² / 2", "200 = 150 + vC² / 2", "vC² = 100", "vC = 10 m/s"], "Em C o carro subiu de novo até 15 m. Parte da energia voltou a ser de altura; o que sobra é de movimento."),
+]);
+q(62, 2, "Um corpo de massa 4,0 kg atinge uma mola com velocidade de 2,0 m/s. Determine a deformação que a mola sofre até que o corpo pare. Despreze os atritos e considere a constante elástica da mola igual a 1,0 × 10² N/m.", [
+  N("", "", 0.4, "m", ["Em = Em₀", "Epe = Ec", "k · x² / 2 = m · v² / 2", "1 · 10² · x² / 2 = 4 · 2² / 2", "50 · x² = 8", "x² = 0,16", "x = 0,4 m (40 cm)"], "O corpo para quando toda a energia de movimento ficou guardada na mola. Iguala as duas energias e isola o x.", { e: { "2.5": "Confira: 8 = 50 · x² → x² = 8 / 50 = 0,16 → x = 0,4 m." } }),
+]);
+q(63, 2, "Uma esfera de massa 0,50 kg parte do repouso no ponto A. Ela desliza pela rampa sem atrito e sem resistência do ar, atingindo em B uma mola de constante elástica k = 5,0 × 10³ N/m, produzindo uma compressão de 20 cm. Determine a altura H correspondente à posição inicial da esfera. Adote g = 10 m/s².", [
+  N("", "", 20, "m", ["x = 20 cm = 0,2 m", "Em = Em₀", "Ep = Epe", "m · g · h = k · x² / 2", "0,5 · 10 · h = 5 · 10³ · (0,2)² / 2", "5 · h = 100", "h = 20 m"], "A energia de altura do começo termina toda guardada na mola. Lembre de passar 20 cm para 0,2 m antes de elevar ao quadrado."),
+]);
+q(64, 2, "No sistema conservativo representado na figura, um corpo de massa m = 2,0 kg parte do repouso em A (altura H = 2,0 m) e desloca-se até atingir uma mola de constante elástica k = 2,0 × 10³ N/m. Considerando g = 10 m/s², determine a deformação máxima sofrida pela mola.", [
+  N("", "", 0.2, "m", ["Em = Em₀", "Epe = Ep", "k · x² / 2 = m · g · h", "2 · 10³ · x² / 2 = 2 · 10 · 2", "1000 · x² = 40", "x² = 0,04", "x = 0,2 m (20 cm)"], "A energia de altura vira energia da mola. Iguala as duas e isola o x."),
+]);
+q(65, 2, "Uma mola de constante elástica k = 1,0 × 10² N/m encontra-se na posição vertical comprimida de 20 cm. Um corpo de massa 0,50 kg é colocado sobre a mola e, em seguida, solto. Determine a altura máxima atingida pelo corpo, medida a partir do ponto de partida. Considere o sistema conservativo e adote g = 10 m/s².", [
+  N("", "", 0.4, "m", ["x = 20 cm = 0,2 m", "Em = Em₀", "Ep = Epe₀", "m · g · h = k · x² / 2", "0,5 · 10 · h = 1 · 10² · (0,2)² / 2", "5 · h = 2", "h = 0,4 m"], "A mola comprimida guarda energia. Quando solta, essa energia joga o corpo para cima e vira energia de altura."),
+]);
+q(66, 2, "Em um sistema conservativo, o gráfico representa a energia cinética de uma partícula em função da distância percorrida. Sabendo que a energia mecânica total do sistema é igual a 220 J, determine a energia potencial da partícula nas posições 0, 2 m, 4 m e 6 m.", [
+  N("0", "posição 0 (Ec = 100 J)", 120, "J", ["Em = Ec + Ep", "100 + Ep = 220", "Ep = 120 J"], "A soma das duas energias é sempre 220 J. Lê a cinética no gráfico e vê quanto falta."),
+  N("2", "posição 2 m (Ec = 0)", 220, "J", ["Em = Ec + Ep", "0 + Ep = 220", "Ep = 220 J"], "Onde a cinética é zero, toda a energia é potencial."),
+  N("4", "posição 4 m (Ec = 250 J)", -30, "J", ["Em = Ec + Ep", "250 + Ep = 220", "Ep = −30 J"], "Aqui a cinética passa de 220 J. Para a soma dar 220, a potencial fica negativa."),
+  N("6", "posição 6 m (Ec = 50 J)", 170, "J", ["Em = Ec + Ep", "50 + Ep = 220", "Ep = 170 J"], "Mesma ideia: 220 menos a cinética."),
+], "", { xl: "d (m)", yl: "Ec (J)", p: [[0, 100], [0.5, 94], [1, 75], [1.5, 44], [2, 0], [2.5, 109], [3, 188], [3.5, 234], [4, 250], [4.5, 238], [5, 200], [5.5, 138], [6, 50]], xt: [0, 1, 2, 3, 4, 5, 6], yt: [50, 100, 150, 200, 250] });
+q(67, 2, "O gráfico mostra a variação da energia cinética de um móvel de massa m = 5,0 kg em função da distância percorrida em um campo conservativo. Sabendo que a energia mecânica total do sistema vale 50 J, determine a velocidade do móvel nas posições 2 m, 8 m e 12 m e a energia potencial nas posições 0, 2 m, 8 m e 12 m.", [
+  N("a1", "velocidade na posição 2 m (Ec = 10 J)", 2, "m/s", ["Ec = m · v² / 2", "10 = 5 · v² / 2", "v² = 4", "v = 2 m/s"], "Lê a energia cinética no gráfico e isola a velocidade."),
+  N("a2", "velocidade na posição 8 m (Ec = 20 J)", 2.828, "m/s", ["Ec = m · v² / 2", "20 = 5 · v² / 2", "v² = 8", "v = √8", "v = 2√2 m/s (≈ 2,8 m/s)"], "√8 não é exata. Fatorando: √8 = 2√2."),
+  N("a3", "velocidade na posição 12 m (Ec = 0)", 0, "m/s", ["Ec = m · v² / 2", "0 = 5 · v² / 2", "v = 0 m/s"], "Energia cinética zero quer dizer parado."),
+  N("b1", "energia potencial na posição 0 (Ec = 0)", 50, "J", ["Em = Ep + Ec = 50 J", "Ep + 0 = 50", "Ep = 50 J"], "A soma é sempre 50 J."),
+  N("b2", "energia potencial na posição 2 m", 40, "J", ["Ep + Ec = 50", "Ep + 10 = 50", "Ep = 40 J"], "50 menos a cinética (10 J)."),
+  N("b3", "energia potencial na posição 8 m", 30, "J", ["Ep + Ec = 50", "Ep + 20 = 50", "Ep = 30 J"], "50 menos a cinética (20 J)."),
+  N("b4", "energia potencial na posição 12 m", 50, "J", ["Ep + Ec = 50", "Ep + 0 = 50", "Ep = 50 J"], "Cinética zero: tudo é potencial."),
+], "", { xl: "d (m)", yl: "Ec (J)", p: [[0, 0], [2, 10], [6, 10], [8, 20], [12, 0]], xt: [0, 2, 4, 6, 8, 10, 12], yt: [10, 20] });
+q(68, 2, "Um menino desce um escorregador de 10 m de altura, partindo do repouso. Considerando g = 10 m/s² e sabendo que 50% da energia mecânica é dissipada durante o movimento, determine a velocidade com que o menino chega à base do escorregador.", [
+  N("", "", 10, "m/s", ["Em₀ = Ep = m · g · h = m · 10 · 10 = 100 · m", "Em = 50% de Em₀ = 50 · m", "Ec = 50 · m", "m · v² / 2 = 50 · m", "v² = 100", "v = 10 m/s"], "Metade da energia se perde no atrito. Só a outra metade vira velocidade. A massa corta.", { e: { "14.142": "Esse é o valor sem perda. Só 50% da energia vira velocidade: v² = 100 → v = 10 m/s." } }),
+]);
+q(69, 2, "Um objeto de 100 g cai, a partir do repouso, de uma altura tal que atinge a velocidade v após percorrer 100 m. Sabendo que, durante a queda, foram dissipados 80 J de energia, determine a velocidade v atingida. Adote g = 10 m/s².", [
+  N("", "", 20, "m/s", ["m = 100 g = 0,1 kg", "Ep₀ = m · g · h = 0,1 · 10 · 100 = 100 J", "Ec = Ep₀ − Edis", "Ec = 100 − 80 = 20 J", "20 = 0,1 · v² / 2", "v² = 400", "v = 20 m/s"], "A massa tem que estar em kg (0,1 kg). Dos 100 J de energia de altura, 80 J se perdem. Sobram 20 J de energia de movimento."),
+]);
+q(70, 2, "Um carro parte do repouso no ponto A, situado a 2,0 m de altura, e desloca-se até o ponto B, localizado a 0,50 m de altura. Sabendo que 40% da energia mecânica inicial foi dissipada pelo atrito ao longo do percurso, calcule a velocidade do carro ao atingir o ponto B. Adote g = 10 m/s².", [
+  N("", "", 3.742, "m/s", ["Em₀ = m · g · h₀ = m · 10 · 2 = 20 · m", "Em = 60% de Em₀ = 12 · m", "Ec + Ep = 12 · m", "m · v² / 2 + m · 10 · 0,5 = 12 · m", "v² / 2 + 5 = 12", "v² = 14", "v = √14 m/s (≈ 3,7 m/s)"], "Se 40% se perde, sobram 60%. Em B o carro ainda está a 0,5 m, então parte da energia é de altura. A massa corta em todos os termos."),
+]);
+q(71, 2, "Um bloco de 2,0 kg é abandonado do repouso no topo de um plano inclinado (altura 5,0 m, comprimento da rampa 25 m) e chega ao plano horizontal com velocidade de 5,0 m/s. Considerando g = 10 m/s², determine:", [
+  N("a", "o trabalho realizado pela força de atrito sobre o bloco", -75, "J", ["Em₀ = m · g · h = 2 · 10 · 5 = 100 J", "Em = m · v² / 2 = 2 · 5² / 2 = 25 J", "τ(Fat) = Em − Em₀", "τ(Fat) = 25 − 100", "τ(Fat) = −75 J"], "Começou com 100 J e chegou com 25 J. Os 75 J que faltam o atrito tirou. Por isso o trabalho do atrito é negativo."),
+  N("b", "a intensidade da força de atrito", 3, "N", ["τ = F · d · cos α", "−75 = Fat · 25 · cos 180°", "−75 = Fat · 25 · (−1)", "Fat = 3 N"], "Agora usa a fórmula do trabalho com a distância da rampa (25 m) e ângulo 180°, porque o atrito é contra o movimento."),
+]);
+q(72, 2, "Um projétil de massa 10 g atinge perpendicularmente uma parede vertical com velocidade de 1,0 × 10² m/s e penetra 10 cm antes de parar. Admitindo que a força exercida pela parede sobre o projétil seja constante, determine sua intensidade.", [
+  N("", "", 500, "N", ["m = 10 g = 0,01 kg ; d = 10 cm = 0,1 m", "Ec₀ = m · v₀² / 2 = 0,01 · 100² / 2 = 50 J", "τ = ΔEc = 0 − 50 = −50 J", "τ = F · d · cos 180°", "−50 = F · 0,1 · (−1)", "F = 500 N"], "A parede tira toda a energia de movimento do projétil (50 J) em 0,1 m. Passe g para kg e cm para m."),
+]);
+q(73, 2, "Um automóvel de massa 800 kg desloca-se com velocidade de 20 m/s. Ao ser freado, para após percorrer 16 m. Considerando g = 10 m/s², determine:", [
+  N("a", "o trabalho realizado pela força de atrito", -160000, "J", ["τ = ΔEc = Ec − Ec₀", "τ = m · v² / 2 − m · v₀² / 2", "τ = 0 − 800 · 20² / 2", "τ = −160000 J"], "O carro para: energia cinética final zero. Toda a energia de movimento foi tirada pelo atrito."),
+  N("c", "o tempo gasto para o veículo parar", 1.6, "s", ["τ = Fa · d · cos 180° → −160000 = Fa · 16 · (−1) → Fa = 10000 N", "Fa = m · a → 10000 = 800 · a → a = 12,5 m/s²", "v = v₀ + a · t", "0 = 20 − 12,5 · t", "t = 1,6 s"], "Primeiro acha a força de atrito, depois a aceleração (que é de freada, por isso entra negativa), e por fim o tempo com v = v₀ + a · t.", { e: { "20": "0 = 20 − 12,5 · t dá t = 20 ÷ 12,5 = 1,6 s." } }),
+], "O item b (coeficiente de atrito) foi riscado na apostila e não entra aqui.");
+q(74, 2, "Em um plano inclinado de 30° em relação à horizontal, um bloco de massa m = 1,0 kg é abandonado do repouso a uma altura h = 0,10 m. Sabendo que sua velocidade ao atingir o plano horizontal é v = 1,0 m/s, determine o trabalho realizado pela força de atrito. Dado: g = 10 m/s².", [
+  N("", "", -0.5, "J", ["Em₀ = m · g · h = 1 · 10 · 0,1 = 1 J", "Em = m · v² / 2 = 1 · 1² / 2 = 0,5 J", "τ(Fat) = Em − Em₀", "τ(Fat) = 0,5 − 1", "τ(Fat) = −0,5 J"], "Compara a energia do começo (altura) com a do fim (movimento). A diferença foi o atrito que tirou."),
+]);
+q(75, 2, "Uma bala de revólver de massa 8,0 g se incrusta em uma parede vertical, ficando imobilizada após penetrar 5,0 cm. Sabendo que a velocidade da bala ao atingir a parede era de 50 m/s, determine a intensidade da força média exercida pela parede sobre a bala.", [
+  N("", "", 200, "N", ["m = 8 g = 0,008 kg ; d = 5 cm = 0,05 m", "τ = ΔEc", "F · d · cos 180° = Ec − Ec₀", "F · 0,05 · (−1) = 0 − 0,008 · 50² / 2", "−0,05 · F = −10", "F = 200 N"], "A parede faz um trabalho negativo que zera a energia de movimento da bala. Intensidade é o valor sem sinal: 200 N.", { m: 1 }),
+]);
+
+/* ================= CAPÍTULO 3 — IMPULSO E QUANTIDADE DE MOVIMENTO ================= */
+q(76, 3, "Uma força de intensidade 10 N, de direção horizontal e sentido da esquerda para a direita, atua sobre uma partícula durante 2,0 s. Determine a intensidade, a direção e o sentido do impulso produzido por essa força.", [
+  N("", "", 20, "N·s", ["I = F · Δt", "I = 10 · 2", "I = 20 N·s", "Direção: horizontal", "Sentido: para a direita"], "Impulso é força vezes tempo. Ele sempre tem a mesma direção e o mesmo sentido da força."),
+]);
+q(77, 3, "Uma partícula desloca-se em trajetória retilínea sob a ação de uma força cuja intensidade varia com o tempo, conforme indicado no gráfico. Determine:", [
+  N("a", "a intensidade do impulso da força no intervalo de 0 a 10 s", 150, "N·s", ["I ≙ área (F × Δt)", "I = b · h / 2 (triângulo)", "I = 10 · 30 / 2", "I = 150 N·s"], "Com gráfico de força por tempo, o impulso é a área embaixo da linha. Aqui é um triângulo."),
+  N("b", "a intensidade da força constante que produz o mesmo impulso (força média)", 15, "N", ["I = F · Δt", "150 = F · 10", "F = 15 N"], "Uma força que não muda e dá o mesmo impulso em 10 s: usa I = F · Δt e isola F."),
+], "", { xl: "t (s)", yl: "F (N)", p: [[0, 30], [10, 0]], xt: [0, 10], yt: [30] });
+q(78, 3, "Uma partícula de massa m = 1,0 kg possui, em determinado instante, velocidade v de módulo igual a 2,0 m/s, direção vertical e sentido para cima. Determine o módulo, a direção e o sentido da quantidade de movimento da partícula nesse instante.", [
+  N("", "", 2, "kg·m/s", ["Q = m · v", "Q = 1 · 2", "Q = 2 kg·m/s", "Direção: vertical", "Sentido: para cima"], "Quantidade de movimento é massa vezes velocidade. Ela aponta para onde a velocidade aponta."),
+]);
+q(79, 3, "Uma partícula move-se em trajetória retilínea obedecendo à função horária s = 9,0t + 2,0t², com s em metros e t em segundos. Sabendo que a massa do corpo é 2,0 × 10⁻¹ kg, determine o módulo da quantidade de movimento da partícula no instante t = 3,0 s.", [
+  N("", "", 4.2, "kg·m/s", ["s = s₀ + v₀ · t + a · t² / 2", "v₀ = 9 m/s ; a / 2 = 2 → a = 4 m/s²", "v = v₀ + a · t", "v = 9 + 4 · 3 = 21 m/s", "Q = m · v", "Q = 0,2 · 21", "Q = 4,2 kg·m/s"], "Compara a função dada com s = s₀ + v₀t + at²/2: o número com t é v₀, e o número com t² é a metade da aceleração. Depois acha a velocidade em 3 s e multiplica pela massa."),
+]);
+q(80, 3, "Um jogador chuta uma bola aplicando uma força de intensidade 5,0 × 10² N durante um intervalo de tempo de 1,0 × 10⁻¹ s. Determine a intensidade do impulso dessa força.", [
+  N("", "", 50, "N·s", ["I = F · Δt", "I = 5 · 10² · 1 · 10⁻¹", "I = 500 · 0,1", "I = 50 N·s"], "Força vezes tempo. 5,0 × 10² é 500 e 1,0 × 10⁻¹ é 0,1."),
+]);
+q(81, 3, "Um ponto material realiza um movimento retilíneo sob a ação de uma força cujo valor algébrico varia com o tempo, conforme representado no gráfico. Determine os módulos dos impulsos da força nos seguintes intervalos de tempo:", [
+  N("a", "de 0 a 3,0 s", 50, "N·s", ["I ≙ área (F × Δt)", "I = (B + b) · h / 2 (trapézio)", "I = (3 + 2) · 20 / 2", "I = 50 N·s"], "De 0 a 3 s a figura é um trapézio: base maior 3, base menor 2 (parte reta, de 0 a 2 s), altura 20.", { e: { "40": "A parte reta em 20 N vai de 0 até 2 s (não até 1 s). Trapézio: (3 + 2) · 20 / 2 = 50." } }),
+  N("b", "de 3,0 a 5,0 s", 30, "N·s", ["I ≙ área (F × Δt)", "I = (B + b) · h / 2 (trapézio)", "I = (2 + 1) · (−20) / 2", "I = −30 N·s → módulo: 30 N·s"], "Abaixo do eixo a força é negativa, e a área também. Como pede o módulo, a resposta é 30 N·s.", { m: 1 }),
+  N("c", "de 0 a 5,0 s", 20, "N·s", ["I total = I₁ + I₂", "I = 50 + (−30)", "I = 20 N·s"], "Soma as duas áreas respeitando o sinal: 50 − 30."),
+], "", { xl: "t (s)", yl: "F (N)", p: [[0, 20], [2, 20], [3, 0], [4, -20], [5, -20]], xt: [1, 2, 3, 4, 5], yt: [-20, 20] });
+q(82, 3, "Uma partícula realiza um movimento descrito pela função s = 2 + 3t, sendo s dado em metros e t em segundos. Sabendo que a massa da partícula é 0,2 kg, determine o módulo da quantidade de movimento no instante t = 2 s.", [
+  N("", "", 0.6, "kg·m/s", ["s = s₀ + v · t → v = 3 m/s", "Q = m · v", "Q = 0,2 · 3", "Q = 0,6 kg·m/s"], "Em s = s₀ + v · t, o número que multiplica o t é a velocidade (3 m/s). Ela não muda com o tempo."),
+]);
+q(83, 3, "Determine a direção, o sentido e a intensidade do impulso do peso de um corpo durante um intervalo de tempo de 2,0 s. Considere que a massa do corpo é 3,0 kg e adote g = 10 m/s².", [
+  N("", "", 60, "N·s", ["P = m · g = 3 · 10 = 30 N", "I = F · Δt", "I = 30 · 2", "I = 60 N·s", "Direção: vertical", "Sentido: para baixo"], "A força aqui é o peso (30 N). O impulso tem a direção e o sentido do peso: vertical, para baixo."),
+]);
+q(84, 3, "(FUVEST-SP) Um veículo de massa 0,30 kg parte do repouso e passa a mover-se com aceleração constante. Após 10 s, encontra-se a 40 m da posição inicial. Determine o valor da quantidade de movimento do veículo nesse instante.", [
+  M("", "", ["2,4 kg·m/s", "6,0 kg·m/s", "60 kg·m/s", "120 kg·m/s", "400 kg·m/s"], 0, ["(v + v₀) / 2 = Δs / Δt", "(v + 0) / 2 = 40 / 10", "v = 8 m/s", "Q = m · v", "Q = 0,3 · 8", "Q = 2,4 kg·m/s → alternativa a"], "Primeiro descobre a velocidade final: com aceleração constante, a velocidade média é a metade da soma (v + v₀). Depois multiplica pela massa."),
+]);
+q(85, 3, "(UF-RN) A quantidade de movimento de uma partícula de massa 0,4 kg possui módulo igual a 1,2 kg·m/s. Nesse instante, a energia cinética da partícula é, em joules:", [
+  M("", "", ["0,8", "1,2", "1,8", "3,0", "9,0"], 2, ["Q = m · v", "1,2 = 0,4 · v", "v = 3 m/s", "Ec = m · v² / 2", "Ec = 0,4 · 3² / 2", "Ec = 1,8 J → alternativa c"], "Duas etapas: acha a velocidade com Q = m · v e depois usa na energia cinética."),
+]);
+q(86, 3, "(UNAERP-SP) O gráfico representa a variação da quantidade de movimento em função do tempo de um móvel de massa igual a 10 kg. Calcule o trabalho realizado pela força resultante sobre o móvel entre os instantes 20 s e 40 s.", [
+  M("", "", ["2 kJ", "0,5 kJ", "3 kJ", "1,5 kJ", "1,0 kJ"], 3, ["Q = m · v", "100 = 10 · v₂₀ → v₂₀ = 10 m/s", "200 = 10 · v₄₀ → v₄₀ = 20 m/s", "τ = ΔEc = m · v² / 2 − m · v₀² / 2", "τ = 10 · 20² / 2 − 10 · 10² / 2", "τ = 2000 − 500", "τ = 1500 J = 1,5 kJ → alternativa d"], "Lê Q no gráfico (100 em 20 s e 200 em 40 s) e acha as duas velocidades. O trabalho da resultante é quanto a energia cinética mudou."),
+], "", { xl: "t (s)", yl: "Q (kg·m/s)", p: [[0, 0], [20, 100], [40, 200]], xt: [0, 20, 40], yt: [100, 200] });
+q(87, 3, "Sobre uma partícula de massa 5,0 kg, que se desloca com velocidade de 20 m/s, passa a atuar uma força constante de intensidade 2,0 × 10² N durante 2,0 s, no mesmo sentido do movimento. Determine o módulo da quantidade de movimento da partícula ao final da ação da força.", [
+  N("", "", 500, "kg·m/s", ["I = ΔQ", "F · Δt = Q − Q₀", "200 · 2 = Q − 5 · 20", "400 = Q − 100", "Q = 500 kg·m/s"], "O impulso é quanto a quantidade de movimento muda. Ela começa em 100 e ganha 400."),
+]);
+q(88, 3, "Um corpo de massa m parte do repouso sob a ação de uma força constante de intensidade 5,0 N. Após 4,0 s, sua velocidade passa a ser 5,0 m/s. Determine:", [
+  N("a", "o módulo da quantidade de movimento do corpo no instante t = 4,0 s", 20, "kg·m/s", ["I = ΔQ", "F · Δt = Q − Q₀", "5 · 4 = Q − 0", "Q = 20 kg·m/s"], "Saiu do repouso (Q₀ = 0). Então a quantidade de movimento final é igual ao impulso."),
+  N("b", "a massa do corpo", 4, "kg", ["Q = m · v", "20 = m · 5", "m = 4 kg"], "Com Q e a velocidade, isola a massa."),
+]);
+q(89, 3, "Uma partícula de massa 2,0 kg desloca-se em movimento retilíneo com velocidade de módulo 5,0 m/s. Uma força constante, paralela à trajetória, atua sobre a partícula durante 10 s. Ao final desse intervalo, a partícula passa a mover-se com velocidade de módulo 5,0 m/s, porém em sentido oposto ao inicial. Determine:", [
+  N("a", "a intensidade do impulso da força durante esse intervalo", 20, "N·s", ["I = ΔQ", "I = m · v − m · v₀", "I = 2 · (−5) − 2 · 5", "I = −10 − 10", "I = −20 N·s → intensidade: 20 N·s"], "A velocidade inverteu o sentido, então a final entra com sinal negativo (−5). Por isso a variação é 20, e não zero.", { m: 1, e: { "0": "A velocidade final tem sentido oposto: entra como −5 m/s. I = 2 · (−5) − 2 · 5 = −20." } }),
+  N("b", "a intensidade da força", 2, "N", ["I = F · Δt", "20 = F · 10", "F = 2 N"], "Com o impulso e o tempo, isola a força.", { m: 1 }),
+]);
+q(90, 3, "Uma partícula descreve uma trajetória retilínea sob a ação de uma força constante que faz sua velocidade variar conforme o gráfico. Sabendo que a massa da partícula é igual a 3 kg, determine a intensidade do impulso da força no intervalo de tempo entre 5 s e 8 s.", [
+  N("", "", 18, "N·s", ["I = ΔQ", "I = m · v − m · v₀", "I = 3 · 19 − 3 · 13", "I = 57 − 39", "I = 18 N·s"], "Lê as velocidades no gráfico: 13 m/s em 5 s e 19 m/s em 8 s. O impulso é a variação da quantidade de movimento."),
+], "", { xl: "t (s)", yl: "v (m/s)", p: [[5, 13], [8, 19]], xt: [0, 5, 8], yt: [13, 19] });
+q(91, 3, "Uma partícula de massa 2,0 kg, movendo-se com velocidade de 10 m/s, passa a sofrer a ação de uma força constante de intensidade 20 N, durante 5,0 s, no mesmo sentido do movimento. Determine:", [
+  N("a", "a intensidade do impulso da força", 100, "N·s", ["I = F · Δt", "I = 20 · 5", "I = 100 N·s"], "Força vezes tempo."),
+  N("b", "o módulo da quantidade de movimento da partícula no instante em que termina a ação da força", 120, "kg·m/s", ["I = ΔQ", "I = Q − Q₀", "100 = Q − 2 · 10", "Q = 120 kg·m/s"], "Ela já tinha Q₀ = 20 kg·m/s e ganhou 100 do impulso. (No caderno: a = 10 m/s², v = 10 + 10 · 5 = 60 m/s e Q = 2 · 60 = 120. Dá o mesmo.)"),
+]);
+q(92, 3, "Uma partícula de massa 3,0 kg realiza movimento retilíneo e uniforme com velocidade de módulo v. Em determinado instante, uma força constante de intensidade 30 N é aplicada em sentido oposto ao movimento inicial. Após 8,0 s, verifica-se que a velocidade da partícula torna-se nula. Determine o valor de v.", [
+  N("", "", 80, "m/s", ["I = ΔQ", "F · Δt = m · v − m · v₀", "−30 · 8 = 3 · 0 − 3 · v₀", "−240 = −3 · v₀", "v₀ = 80 m/s"], "A força é contra o movimento, então entra negativa. A velocidade final é zero."),
+]);
+q(93, 3, "(UF-RN) Um carrinho de massa 2,0 kg desloca-se com velocidade de 3,0 m/s quando passa a sofrer a ação de uma força no mesmo sentido do movimento, até que sua velocidade dobre de valor. O módulo do impulso aplicado ao carrinho, em N·s, é:", [
+  M("", "", ["1", "3", "6", "9", "12"], 2, ["I = ΔQ", "I = m · v − m · v₀", "I = 2 · 6 − 2 · 3", "I = 12 − 6", "I = 6 N·s → alternativa c"], "A velocidade dobra: de 3 para 6 m/s. O impulso é a diferença entre as duas quantidades de movimento."),
+]);
+q(94, 3, "(ESPM-SP) Um ponto material de massa m = 2 kg realiza movimento retilíneo com velocidade escalar de 10 m/s. Durante certo intervalo de tempo, atua sobre ele uma força constante, paralela à trajetória e em sentido oposto ao movimento, fazendo com que sua velocidade escalar passe a 5 m/s. Determine a intensidade do impulso dessa força.", [
+  N("", "", 10, "N·s", ["I = ΔQ", "I = m · v − m · v₀", "I = 2 · 5 − 2 · 10", "I = 10 − 20", "I = −10 N·s → intensidade: 10 N·s"], "O sinal negativo só mostra que a força freou. A intensidade é o valor sem sinal: 10 N·s.", { m: 1 }),
+]);
+q(95, 3, "Um corpo de massa m = 2,0 kg, inicialmente em repouso, fica sujeito à ação de uma força resultante F, de direção constante, cuja intensidade varia com o tempo conforme o gráfico. Determine:", [
+  N("a", "a intensidade do impulso da força F no intervalo de 0 a 20 s", 250, "N·s", ["I ≙ área (F × Δt)", "I = (B + b) · h / 2 + b · h / 2", "I = (20 + 10) · 10 / 2 + 10 · 20 / 2", "I = 150 + 100", "I = 250 N·s"], "Divide a figura em duas: um trapézio (0 a 10 s) e um triângulo (10 a 20 s). Soma as áreas."),
+  N("b", "a velocidade do corpo no instante t = 20 s", 125, "m/s", ["I = ΔQ", "I = m · v − m · v₀", "250 = 2 · v − 0", "v = 125 m/s"], "Saiu do repouso. O impulso inteiro vira quantidade de movimento."),
+], "", { xl: "t (s)", yl: "F (N)", p: [[0, 10], [10, 20], [20, 0]], xt: [0, 10, 20], yt: [10, 20] });
+q(96, 3, "Uma partícula de massa 10 g realiza movimento sob a ação de uma força de direção constante, cujo valor algébrico varia com o tempo conforme o gráfico. Sabendo que a velocidade da partícula é nula no instante t = 0, determine sua velocidade no instante t = 2 s.", [
+  N("", "", 0, "m/s", ["I ≙ área (F × Δt)", "I = 1 · 1 / 2 + 1 · (−1) / 2", "I = 0,5 − 0,5 = 0", "I = ΔQ", "0 = m · v − 0", "v = 0 m/s"], "De 0 a 1 s a força é positiva (área +0,5). De 1 a 2 s é negativa (área −0,5). Uma cancela a outra: o impulso total é zero e a partícula volta a ficar parada."),
+], "", { xl: "t (s)", yl: "F (N)", p: [[0, 1], [1, 0], [2, -1]], xt: [0, 1, 2], yt: [-1, 1] });
+q(97, 3, "Uma bola de tênis de massa m = 0,10 kg é lançada horizontalmente contra uma parede, atingindo-a com velocidade de módulo 20 m/s. Após o choque, a bola retorna horizontalmente com a mesma velocidade em módulo. Determine:", [
+  N("a", "a intensidade do impulso recebido pela bola", 4, "N·s", ["I = ΔQ", "I = m · v − m · v₀", "I = 0,1 · (−20) − 0,1 · 20", "I = −2 − 2", "I = −4 N·s → intensidade: 4 N·s"], "A bola volta: a velocidade final entra negativa (−20). A variação é de 4, não zero.", { m: 1 }),
+  N("b", "a intensidade da força média exercida pela parede sobre a bola durante o impacto, sabendo que sua duração é de 0,10 s", 40, "N", ["I = F · Δt", "4 = F · 0,1", "F = 40 N"], "Com o impulso e o tempo da batida, isola a força.", { m: 1 }),
+]);
+q(98, 3, "A intensidade da força resultante que atua sobre uma partícula de massa m = 10 g, inicialmente em repouso, varia com o tempo conforme o gráfico. Determine:", [
+  N("a", "o módulo da quantidade de movimento da partícula no instante t = 20 s", 150, "kg·m/s", ["I ≙ área (F × Δt)", "I = (B + b) · h / 2 (trapézio)", "I = (20 + 10) · 10 / 2", "I = 150 N·s", "I = ΔQ → 150 = Q − 0", "Q = 150 kg·m/s"], "A área de 0 a 20 s é um trapézio. Como saiu do repouso, Q é igual ao impulso."),
+  N("b", "a velocidade da partícula no instante t = 10 s", 5000, "m/s", ["m = 10 g = 0,01 kg", "I ≙ área = b · h / 2 = 10 · 10 / 2 = 50 N·s", "I = m · v − m · v₀", "50 = 0,01 · v − 0", "v = 5000 m/s"], "Até 10 s a área é um triângulo. Passe a massa para kg (0,01 kg)."),
+], "", { xl: "t (s)", yl: "F (N)", p: [[0, 0], [10, 10], [20, 10]], xt: [0, 10, 20], yt: [10] });
+q(99, 3, "Um corpo de massa 1,0 kg desloca-se em movimento retilíneo e uniforme. Em determinado trecho de sua trajetória, passa a atuar sobre ele uma força com a mesma direção do movimento, cuja intensidade varia com o tempo conforme o gráfico. Nessas condições, pode-se afirmar que a variação da velocidade Δv do corpo é:", [
+  M("", "", ["6,5 m/s", "5,5 m/s", "8,0 m/s", "2,0 m/s", "4,5 m/s"], 1, ["I ≙ área (F × Δt)", "I = 0,4 · 30 / 2 + 0,1 · (−10) / 2", "I = 6 − 0,5 = 5,5 N·s", "I = ΔQ = m · Δv", "5,5 = 1 · Δv", "Δv = 5,5 m/s → alternativa b"], "Dois triângulos: um grande acima do eixo (positivo) e um pequeno abaixo (negativo). Soma com sinal e divide pela massa."),
+], "", { xl: "t (s)", yl: "F (N)", p: [[0, 0], [0.2, 30], [0.4, 0], [0.45, -10], [0.5, 0]], xt: [0.1, 0.2, 0.3, 0.4, 0.5], yt: [-10, 10, 20, 30] });
+q(100, 3, "Um projétil de massa 4,0 kg é lançado horizontalmente por um canhão com velocidade de módulo 6,0 · 10² m/s. O canhão possui massa 2,0 · 10³ kg e encontra-se inicialmente em repouso. Desprezando o atrito entre o canhão e o solo, determine o módulo da velocidade de recuo do canhão.", [
+  N("", "", 1.2, "m/s", ["Q₀ = Q", "0 = mp · vp + mc · vc", "0 = 4 · 6 · 10² + 2 · 10³ · vc", "−2 · 10³ · vc = 24 · 10²", "vc = −1,2 m/s → módulo: 1,2 m/s"], "Antes do tiro tudo está parado: quantidade de movimento zero. Depois, a soma tem que continuar zero. O sinal negativo mostra que o canhão vai para trás.", { m: 1 }),
+]);
+q(101, 3, "Uma pessoa de massa 80 kg encontra-se sobre um carrinho de massa 20 kg, segurando em uma das mãos uma bola de massa 2,0 kg. Considerando desprezível o atrito entre o carrinho e a pista, com que velocidade horizontal essa pessoa deve arremessar a bola para que o carrinho passe a mover-se em sentido contrário ao da bola, com velocidade de 0,30 m/s?", [
+  N("", "", 15, "m/s", ["Q₀ = Q", "0 = mp · vp + mc · vc + mb · vb", "0 = 80 · 0,3 + 20 · 0,3 + 2 · vb", "0 = 24 + 6 + 2 · vb", "vb = −15 m/s → módulo: 15 m/s"], "Tudo começa parado (Q₀ = 0). Pessoa e carrinho vão juntos para um lado, a bola vai para o outro. O sinal negativo é o sentido contrário.", { m: 1 }),
+]);
+q(102, 3, "Uma bala de massa 0,20 kg, movendo-se horizontalmente com velocidade de 300 m/s, atinge um bloco de madeira de massa 1,0 kg, inicialmente em repouso sobre um plano horizontal sem atrito, ficando presa ao bloco. Determine a velocidade com que o conjunto (bloco e bala) passa a se mover após o impacto.", [
+  N("", "", 50, "m/s", ["Q₀ = Q", "mp · vp + mb · vb = (mp + mb) · vc", "0,2 · 300 + 1 · 0 = (0,2 + 1) · vc", "60 = 1,2 · vc", "vc = 50 m/s"], "Antes só a bala se move. Depois, bala e bloco andam grudados, então soma as massas."),
+]);
+q(103, 3, "Os corpos A e B possuem massas mA = 1,0 kg e mB = 2,0 kg. Entre eles há uma mola de massa desprezível, inicialmente comprimida, e o sistema é abandonado sobre uma superfície horizontal sem atrito. Ao se distender, a mola impulsiona os dois corpos, fazendo com que B adquira velocidade de 0,50 m/s. Determine:", [
+  N("a", "a velocidade final do corpo A (módulo)", 1, "m/s", ["Q₀ = Q", "0 = mA · vA + mB · vB", "0 = 1 · vA + 2 · 0,5", "vA = −1 m/s → módulo: 1 m/s (sentido oposto ao de B)"], "Começa parado: a soma tem que continuar zero. A vai para o lado contrário de B.", { m: 1 }),
+  N("b", "a energia potencial elástica armazenada na mola antes de o sistema ser abandonado", 0.75, "J", ["Em = Em₀", "Epe = Ec(A) + Ec(B)", "Epe = 1 · 1² / 2 + 2 · 0,5² / 2", "Epe = 0,5 + 0,25", "Epe = 0,75 J"], "A energia que estava guardada na mola virou energia de movimento dos dois corpos. Soma as duas energias cinéticas."),
+]);
+q(104, 3, "Dois astronautas, A e B, estão inicialmente em repouso em uma região do espaço, livres da ação de forças externas. Ao empurrarem um ao outro, passam a se afastar. O astronauta A, de massa 80 kg, adquire velocidade de módulo 2,0 m/s. Determine o módulo da velocidade adquirida pelo astronauta B, sabendo que sua massa é 50 kg.", [
+  N("", "", 3.2, "m/s", ["Q₀ = Q", "0 = mA · vA + mB · vB", "0 = 80 · 2 + 50 · vB", "−50 · vB = 160", "vB = −3,2 m/s → módulo: 3,2 m/s"], "Começam parados. O mais leve sai mais rápido, para o lado oposto.", { m: 1 }),
+]);
+q(105, 3, "Uma granada, inicialmente em repouso sobre um plano horizontal sem atrito, explode e divide-se em três partes de massas iguais. Na figura (malha quadriculada) estão as velocidades de duas partes: v₁ vertical para cima, com 2 quadradinhos, e v₂ horizontal para a direita, com 3 quadradinhos. Represente o vetor velocidade da terceira parte.", [
+  T("", "", ["Q₀ = Q", "0 = m · v₁ + m · v₂ + m · v₃", "v₃ = −(v₁ + v₂)", "v₃: 3 quadradinhos para a esquerda e 2 quadradinhos para baixo (seta na diagonal, apontando para baixo e para a esquerda)."], "Parada antes: a soma das três setas tem que dar zero. A terceira seta precisa desfazer as outras duas: o contrário de \"3 para a direita e 2 para cima\"."),
+]);
+q(106, 3, "(FUVEST-SP) Sobre uma mesa horizontal sem atrito, dois blocos, A e B, de massas m e 2m, respectivamente, movem-se ao longo de uma mesma reta e colidem. Após a colisão, os blocos permanecem unidos e passam a deslocar-se para a direita com velocidade v. O único esquema que NÃO pode representar os movimentos dos dois blocos antes da colisão é:", [
+  M("", "Velocidades antes da colisão (positivo = para a direita):", ["vB = 1,5v e vA = 0", "vB = 2v e vA = −v", "vB = 3v e vA = −3v", "vB = 2v e vA = v", "vB = 1,25v e vA = 0,5v"], 3, ["Q₀ = Q", "Depois: Q = (m + 2m) · v = 3mv", "a) 2m · 1,5v + 0 = 3mv ✓", "b) 2m · 2v − m · v = 3mv ✓", "c) 2m · 3v − m · 3v = 3mv ✓", "d) 2m · 2v + m · v = 5mv ✗", "e) 2m · 1,25v + m · 0,5v = 3mv ✓", "Alternativa d"], "Depois da batida a quantidade de movimento é 3mv. Antes tem que ser igual. Calcula 2m · vB + m · vA em cada alternativa: só a d dá outro valor."),
+]);
+q(107, 3, "No instante t = 0, um bloco de massa 3,0 kg, deslocando-se no vácuo com velocidade horizontal de módulo 30 m/s, da esquerda para a direita, sofre a explosão de uma pequena carga explosiva de massa desprezível, fragmentando-se em três partes: A, B e C, de mesma massa. Os fragmentos A e B passam a mover-se com velocidades verticais de mesmo módulo, porém em sentidos opostos.", [
+  T("a", "Represente o vetor quantidade de movimento do bloco antes da explosão e os vetores quantidade de movimento dos fragmentos imediatamente após a explosão.", ["Antes: Q₀ = m · v = 3 · 30 = 90 kg·m/s, horizontal, para a direita.", "Depois: Q(A) vertical para cima e Q(B) vertical para baixo, do mesmo tamanho (uma cancela a outra).", "Q(C): horizontal, para a direita, com 90 kg·m/s."], "A e B têm a mesma massa e velocidades iguais e opostas: as duas setas se anulam. Sobra para C carregar toda a quantidade de movimento do começo."),
+  N("b", "Determine o módulo da velocidade do terceiro fragmento, C.", 90, "m/s", ["Q₀ = Q", "m · v = mC · vC", "3 · 30 = 1 · vC", "vC = 90 m/s"], "Cada pedaço tem 1 kg (3 kg ÷ 3). C sozinho fica com os 90 kg·m/s, então precisa ir a 90 m/s."),
+]);
+q(108, 3, "Sobre uma superfície horizontal sem atrito, um objeto inicialmente em repouso explode em três partes de massas iguais. Qual das figuras representa corretamente a situação após a explosão?", [
+  M("", "O que cada figura mostra:", ["as três partes indo para a direita", "uma parte para cima, uma para baixo e uma para a direita", "uma parte para cima, uma parada e uma para a direita", "uma parte para a esquerda, uma parada (v = 0) e uma para a direita", "duas partes paradas e uma para a direita"], 3, ["Q₀ = Q", "Q₀ = 0 (objeto em repouso)", "A soma dos vetores depois tem que ser zero", "d) esquerda + direita se cancelam e a do meio está parada → alternativa d"], "Estava parado, então a soma das setas depois tem que ser zero. Só na d as setas se cancelam. Na b, cima e baixo se cancelam, mas sobra uma seta para a direita."),
+]);
+q(109, 3, "Uma granada desloca-se horizontalmente para a direita e explode, originando dois fragmentos de massas iguais. Um dos fragmentos passa a mover-se verticalmente para cima. A velocidade do segundo fragmento, imediatamente após a explosão, é melhor representada por:", [
+  M("", "Seta de cada alternativa:", ["vertical para baixo", "horizontal para a direita", "diagonal para baixo e para a direita", "diagonal para baixo e para a esquerda", "horizontal para a esquerda"], 2, ["Q₀ = Q", "Antes: Q₀ horizontal, para a direita", "Depois: Q₁ (para cima) + Q₂ = Q₀", "Q₂ precisa de uma parte para baixo (cancela Q₁) e uma parte para a direita (mantém Q₀)", "Alternativa c"], "A soma das duas setas depois tem que ser igual à seta de antes (para a direita). Se um pedaço foi para cima, o outro precisa ir para baixo para cancelar, e também para a direita para manter o movimento."),
+]);
+q(110, 3, "Uma pequena esfera, cuja quantidade de movimento está representada na figura (seta para a direita), colide com outra esfera inicialmente em repouso. Após a colisão, são apresentadas quatro possibilidades para as quantidades de movimento das duas esferas. Quais dos esquemas são fisicamente possíveis?", [
+  M("", "Esquemas: I) duas setas pequenas iguais, uma para a esquerda e uma para a direita. II) uma seta para a direita e outra para baixo. III) uma seta pequena para a esquerda e uma grande para a direita. IV) duas setas iguais em diagonal, uma para cima-direita e outra para baixo-direita.", ["I e II", "II e III", "III e IV", "II e IV", "I e IV"], 2, ["Q₀ = Q", "A soma das setas depois tem que dar a seta de antes (para a direita)", "I) esquerda + direita iguais = 0 ✗", "II) sobra uma parte para baixo ✗", "III) grande para a direita − pequena para a esquerda = para a direita ✓", "IV) cima e baixo se cancelam, sobra para a direita ✓", "Alternativa c"], "Soma as duas setas de cada esquema. Só vale se o resultado for uma seta para a direita, igual à de antes."),
+]);
+q(111, 3, "Uma granada de massa 2,0 kg, deslocando-se horizontalmente para a direita com velocidade de 3,0 m/s, explode, originando dois fragmentos de massas iguais. Um dos fragmentos é lançado verticalmente para baixo com velocidade de 8,0 m/s.", [
+  T("a", "Represente o vetor quantidade de movimento do segundo fragmento imediatamente após a explosão.", ["Seta na diagonal: para a direita e para cima.", "Parte horizontal: 6 kg·m/s para a direita.", "Parte vertical: 8 kg·m/s para cima."], "O segundo pedaço precisa ir para cima para cancelar o que foi para baixo, e para a direita para manter o movimento que a granada já tinha."),
+  N("b", "Calcule a velocidade com que o segundo fragmento é lançado.", 10, "m/s", ["Vertical: Q↑ = Q↓ → 1 · v↑ = 1 · 8 → v↑ = 8 m/s", "Horizontal: Q antes = Q depois → 2 · 3 = 1 · v→ → v→ = 6 m/s", "vR² = 8² + 6²", "vR = √100", "vR = 10 m/s"], "Cada pedaço tem 1 kg. Faz a conta separada na vertical e na horizontal. Depois junta as duas com Pitágoras."),
+]);
+
+const FORM = {
+1:[["τ = F · d · cos α","Trabalho de uma força. F = força (N), d = deslocamento (m), α = ângulo entre a força e o deslocamento. Resultado em J."],
+   ["P = τ / Δt","Potência. τ = trabalho (J), Δt = tempo (s). Resultado em W."],
+   ["P = F · v · cos α","Potência quando o enunciado dá força e velocidade."],
+   ["τ = P · Δt","Trabalho quando o enunciado dá potência e tempo."],
+   ["τ ≙ área (F × d)","No gráfico de força por deslocamento, a área é o trabalho."],
+   ["τ ≙ área (P × Δt)","No gráfico de potência por tempo, a área é o trabalho."],
+   ["P = m · g","Peso (apoio). m em kg, g = 10 m/s². Resultado em N."]],
+2:[["Em = Em₀","Conservação: a energia mecânica do fim é igual à do começo (sem atrito e sem resistência do ar)."],
+   ["Em = E₁ + E₂ + E₃ …","A energia mecânica é a soma das energias (cinética + potenciais)."],
+   ["Ep = m · g · h","Energia potencial gravitacional: energia da altura. h em m. Resultado em J."],
+   ["Ec = m · v² / 2","Energia cinética: energia da velocidade. m em kg, v em m/s. Resultado em J."],
+   ["Epe = k · x² / 2","Energia potencial elástica: energia da mola deformada. k em N/m, x em m."],
+   ["Fe = k · x","Força elástica (força da mola)."],
+   ["τ = ΔEc","Trabalho da força resultante = variação da energia cinética (usada nas questões 35, 37, 38, 72, 73 e 75)."]],
+3:[["I = F · Δt","Impulso. F em N, Δt em s. Resultado em N·s."],
+   ["Q = m · v","Quantidade de movimento. Resultado em kg·m/s."],
+   ["I ≙ área (F × Δt)","No gráfico de força por tempo, a área é o impulso."],
+   ["I = ΔQ","Teorema do impulso: I = Q − Q₀ = m · v − m · v₀."],
+   ["Q₀ = Q","Conservação: a quantidade de movimento antes é igual à de depois (explosões, recuos e colisões)."],
+   ["v = v₀ + a · t","Apoio, do movimento com aceleração constante."]]};
+
+const AULAS = {
+1:`<div class="card"><h3>O que é trabalho</h3><p>Em Física, uma força <b>realiza trabalho</b> quando ela age enquanto o corpo se desloca. Quanto maior a força e maior a distância, maior o trabalho.</p>
+<p class="fx">τ = F · d · cos α</p><p>O <b>cos α</b> diz se a força ajuda ou atrapalha:</p>
+<div class="scroll"><table><tr><th>Ângulo entre F e d</th><th>cos</th><th>Trabalho</th></tr><tr><td>0° (mesmo sentido)</td><td>1</td><td>positivo: ajuda</td></tr><tr><td>60°</td><td>0,5</td><td>positivo, metade</td></tr><tr><td>90° (perpendicular)</td><td>0</td><td>zero</td></tr><tr><td>120°</td><td>−0,5</td><td>negativo</td></tr><tr><td>180° (sentido contrário)</td><td>−1</td><td>negativo: atrapalha</td></tr></table></div></div>
+<div class="card"><h3>Trabalho do peso</h3><p>O peso aponta sempre para baixo. Então só importa quanto o corpo <b>subiu ou desceu</b>:</p><p>Desceu → trabalho <b>positivo</b> (P · h). Subiu → <b>negativo</b> (−P · h). Mesma altura → <b>zero</b>.</p></div>
+<div class="card"><h3>Quando tem gráfico</h3><p>Se a força muda, não dá para usar a fórmula direto. O trabalho é a <b>área</b> embaixo da linha do gráfico F × d. O mesmo vale para o gráfico P × Δt.</p></div>
+<div class="card"><h3>Potência</h3><p>Potência é a <b>rapidez</b> com que o trabalho é feito: trabalho dividido pelo tempo.</p><p class="fx">P = τ / Δt &nbsp;&nbsp; ou &nbsp;&nbsp; P = F · v · cos α</p><p>Use a segunda quando o enunciado dá força e velocidade (como o carro em velocidade constante).</p></div>
+<div class="card"><h3>Exemplo no formato do professor</h3><p>Força de 10 N, deslocamento de 2 m no mesmo sentido, em 5 s.</p><div class="res"><div class="cad"><div class="ln">τ = F · d · cos α</div><div class="ln">τ = 10 · 2 · cos 0°</div><div class="ln fin">τ = 20 J</div><br><div class="ln">P = τ / Δt</div><div class="ln">P = 20 / 5</div><div class="ln fin">P = 4 W</div></div></div></div>`,
+2:`<div class="card"><h3>Três tipos de energia</h3><p><b>Cinética (Ec)</b>: energia de quem tem velocidade. <span class="fx">Ec = m · v² / 2</span></p><p><b>Potencial gravitacional (Ep)</b>: energia de quem está no alto. <span class="fx">Ep = m · g · h</span></p><p><b>Potencial elástica (Epe)</b>: energia guardada na mola esticada ou comprimida. <span class="fx">Epe = k · x² / 2</span></p></div>
+<div class="card"><h3>Conservação da energia mecânica</h3><p>Sem atrito e sem resistência do ar, a energia só <b>troca de tipo</b>. A soma não muda:</p><p class="fx">Em = Em₀</p><p>Jeito de resolver: escreva <b>qual energia existe no começo</b> e <b>qual existe no fim</b>, e iguale.</p><p>Exemplo: corpo cai do repouso → no começo só Ep; no fim só Ec. Então Ec = Ep₀.</p></div>
+<div class="card"><h3>Quando tem atrito (energia dissipada)</h3><p>O atrito transforma parte da energia em calor. Aí a energia do fim é <b>menor</b> que a do começo. A diferença é o trabalho do atrito (negativo).</p></div>
+<div class="card"><h3>Mola</h3><p>Se o enunciado dá a força e a deformação, primeiro ache o k com <span class="fx">Fe = k · x</span>. Depois use <span class="fx">Epe = k · x² / 2</span>. Sempre com x em metros.</p></div>
+<div class="card"><h3>Exemplo no formato do professor</h3><p>Corpo abandonado de 5 m. Velocidade no solo? (g = 10 m/s²)</p><div class="res"><div class="cad"><div class="ln">Em = Em₀</div><div class="ln">Ec = Ep₀</div><div class="ln">m · v² / 2 = m · g · h</div><div class="ln">v² / 2 = 10 · 5</div><div class="ln">v² = 100</div><div class="ln fin">v = 10 m/s</div></div></div></div>`,
+3:`<div class="card"><h3>Impulso</h3><p>Impulso é o "empurrão" completo: a força multiplicada pelo tempo que ela agiu.</p><p class="fx">I = F · Δt</p><p>Se a força muda com o tempo, o impulso é a <b>área</b> do gráfico F × Δt. Área abaixo do eixo conta como negativa.</p></div>
+<div class="card"><h3>Quantidade de movimento</h3><p>É a massa vezes a velocidade. Tem direção e sentido, iguais aos da velocidade.</p><p class="fx">Q = m · v</p><p>Escolha um sentido como positivo. Quem vai para o outro lado entra com sinal <b>negativo</b>.</p></div>
+<div class="card"><h3>Teorema do impulso</h3><p>O impulso é quanto a quantidade de movimento mudou:</p><p class="fx">I = ΔQ = m · v − m · v₀</p><p>Pegadinha: se o corpo <b>volta</b> (inverte o sentido), a velocidade final é negativa.</p></div>
+<div class="card"><h3>Conservação (explosão, recuo, colisão)</h3><p>Sem força externa, a quantidade de movimento total não muda:</p><p class="fx">Q₀ = Q</p><p>Se tudo começa parado, Q₀ = 0: os pedaços saem para lados opostos. Se dois corpos ficam grudados depois da batida, some as massas.</p></div>
+<div class="card"><h3>Exemplo no formato do professor</h3><p>Canhão de 2000 kg, parado, atira projétil de 4 kg a 600 m/s.</p><div class="res"><div class="cad"><div class="ln">Q₀ = Q</div><div class="ln">0 = mp · vp + mc · vc</div><div class="ln">0 = 4 · 600 + 2000 · vc</div><div class="ln">vc = −2400 / 2000</div><div class="ln fin">vc = −1,2 m/s</div></div></div><p>O sinal negativo mostra que o canhão vai para trás.</p></div>`};
+
+const VIDS = {
+1:[["Kp8ea-uzeKs","Aula sobre trabalho de uma força — 1º ano do Ensino Médio","Trabalho de uma força, trabalho do peso e área do gráfico F × d."],
+   ["3SOzLz9g0uw","Trabalho de uma força — Aula 01","Força constante e paralela ao deslocamento."],
+   ["jqOHy9hGDqA","Potência média — Aula 06","Potência como trabalho dividido pelo tempo."],
+   ["G5KJZmG9-Uk","Me Salva! — Potência (mecânica)","Conceito e fórmulas de potência, com exemplo."]],
+2:[["GbrazHwIcaY","Energia mecânica e sua conservação","Energias cinética, potencial gravitacional e elástica, com exercício."],
+   ["d0HGo6r8swo","Conservação da energia (revisão)","Energia cinética, mecânica, potencial elástica e conservação."]],
+3:[["UasrkLGFEuM","Teorema do Impulso — Brasil Escola","O impulso e sua relação com a quantidade de movimento."],
+   ["CGntGxWl2nE","Impulso e teorema do impulso","Foco em como fazer os exercícios."],
+   ["b-q22Vk9Wwo","Colisões mecânicas","Aplicação da conservação da quantidade de movimento."]]};
+
+const UN = {"J":["E",1],"kJ":["E",1e3],"W":["P",1],"kW":["P",1e3],"N":["F",1],"N/m":["K",1],"m":["L",1],"cm":["L",.01],"m/s":["V",1],"s":["T",1],"kg":["M",1],"N·s":["I",1],"kg·m/s":["I",1]};
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "fisica3tri_v1";
+let ST = {}; try { ST = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { ST = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch (e) {} }
+
+function go(v) { $$(".view").forEach(x => x.classList.toggle("on", x.id === "v-" + v)); $$("#nav button").forEach(b => b.classList.toggle("on", b.dataset.go === v)); window.scrollTo(0, 0); if (v === "home") renderProg(); if (v === "prat") renderNums(); }
+document.addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) go(b.dataset.go); });
+
+/* ---------- números ---------- */
+function parseNum(str) {
+  let s = String(str || "").trim().toLowerCase().replace(/\s+/g, "").replace(/[−–]/g, "-").replace(/,/g, ".");
+  const sup = {"⁰":"0","¹":"1","²":"2","³":"3","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁻":"-"};
+  s = s.replace(/10([⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+)/g, (m, a) => "10^" + [...a].map(c => sup[c]).join(""));
+  if (!s) return NaN;
+  let m = s.match(/^(-?\d*\.?\d+)[x×*·]10\^?\(?(-?\d+)\)?/); if (m) return parseFloat(m[1]) * Math.pow(10, parseInt(m[2]));
+  m = s.match(/^10\^\(?(-?\d+)\)?/); if (m) return Math.pow(10, parseInt(m[1]));
+  m = s.match(/^(-?)(\d*\.?\d*)(?:√|raizde|raiz|sqrt)\(?(\d*\.?\d+)\)?/); if (m) return (m[1] ? -1 : 1) * (m[2] ? parseFloat(m[2]) : 1) * Math.sqrt(parseFloat(m[3]));
+  m = s.match(/^(-?\d*\.?\d+)\/(\d*\.?\d+)/); if (m) return parseFloat(m[1]) / parseFloat(m[2]);
+  m = s.match(/^-?\d*\.?\d+(e-?\d+)?/); return m ? parseFloat(m[0]) : NaN;
+}
+const near = (a, b) => Math.abs(a - b) <= Math.max(Math.abs(b) * 0.02, 1e-9);
+function checkNum(it, raw, unit) {
+  const a = parseNum(raw); if (isNaN(a)) return { c: "mid", t: "Digite só o número (pode usar vírgula, 10^4 ou √)." };
+  const tu = UN[it.u], uu = unit ? UN[unit] : null;
+  let val = a, target = it.v;
+  if (uu && uu[0] === tu[0]) { val = a * uu[1]; target = it.v * tu[1]; }
+  else if (!uu) { /* sem unidade: compara direto, e também na unidade base */ }
+  let okv = near(val, target) || (!uu && near(a * 1, it.v * tu[1]) && tu[1] !== 1);
+  if (!uu && !okv) { for (const k in UN) if (UN[k][0] === tu[0] && near(a * UN[k][1], it.v * tu[1])) okv = true; }
+  const sign = !okv && it.v !== 0 && near(-val, target);
+  if (!okv && sign && it.m) okv = true;
+  if (!okv && it.m && near(Math.abs(val), Math.abs(target))) okv = true;
+  if (okv) {
+    if (!uu) return { c: "mid", t: "Valor certo. Faltou escolher a unidade: " + it.u + ".", half: 1 };
+    if (uu[0] !== tu[0]) return { c: "mid", t: "Valor certo, mas a unidade é " + it.u + ".", half: 1 };
+    return { c: "ok", t: "Certo! " + fmt(it.v) + " " + it.u + "." };
+  }
+  if (it.e) for (const k in it.e) if (near(a, parseFloat(k))) return { c: "no", t: it.e[k] };
+  if (sign) return { c: "no", t: "O número está certo, mas o sinal está trocado. Veja o cosseno do ângulo ou o sentido." };
+  if (uu && uu[0] !== tu[0]) return { c: "no", t: "Ainda não. Confira também a unidade: aqui a resposta é em " + it.u + "." };
+  return { c: "no", t: "Ainda não. Confira as unidades e a conta, ou veja a resolução." };
+}
+function fmt(v) { const r = Math.round(v * 1000) / 1000; return String(r).replace(".", ",").replace("-", "−"); }
+
+/* ---------- gráfico ---------- */
+function graph(g) {
+  const W = 320, H = 210, L = 44, R = 16, T = 22, B = 34;
+  const xs = g.p.map(p => p[0]).concat(g.xt || [], [0]), ys = g.p.map(p => p[1]).concat(g.yt || [], [0]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs) * 1.08 || 1, y0 = Math.min(...ys), y1 = Math.max(...ys) * 1.12 || 1, yb = y0 < 0 ? y0 * 1.15 : 0;
+  const X = x => L + (x - x0) / (x1 - x0) * (W - L - R), Y = y => H - B - (y - yb) / (y1 - yb) * (H - T - B);
+  let s = `<svg class="graph" viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico ${esc(g.yl)} por ${esc(g.xl)}">`;
+  (g.yt || []).forEach(y => { if (y !== 0) s += `<line x1="${L}" y1="${Y(y)}" x2="${W - R}" y2="${Y(y)}" stroke="#c5cfdf" stroke-dasharray="3 3"/><text x="${L - 6}" y="${Y(y) + 4}" font-size="11" text-anchor="end" fill="#44506a">${fmt(y)}</text>`; });
+  (g.xt || []).forEach(x => { if (x !== x0 || x0 !== 0) s += `<line x1="${X(x)}" y1="${T}" x2="${X(x)}" y2="${H - B}" stroke="#c5cfdf" stroke-dasharray="3 3"/>`; s += `<text x="${X(x)}" y="${Y(0) + 14}" font-size="11" text-anchor="middle" fill="#44506a">${fmt(x)}</text>`; });
+  s += `<line x1="${L}" y1="${Y(0)}" x2="${W - 6}" y2="${Y(0)}" stroke="#16233b" stroke-width="1.4"/><line x1="${L}" y1="${H - B + (y0 < 0 ? 0 : 0)}" x2="${L}" y2="10" stroke="#16233b" stroke-width="1.4"/>`;
+  s += `<text x="${L + 6}" y="14" font-size="12" font-weight="700" fill="#16233b">${esc(g.yl)}</text><text x="${W - 6}" y="${Y(0) - 6}" font-size="12" font-weight="700" text-anchor="end" fill="#16233b">${esc(g.xl)}</text>`;
+  s += `<polyline fill="none" stroke="#d0342c" stroke-width="2.4" stroke-linejoin="round" points="${g.p.map(p => X(p[0]) + "," + Y(p[1])).join(" ")}"/>`;
+  return s + "</svg>";
+}
+
+/* ---------- questão ---------- */
+const kOf = (q, it) => q.n + ":" + it.l;
+function resHTML(it) {
+  const n = it.s.length; let fin = n - 1;
+  if (it.k === "num") for (let i = n - 1; i >= 0; i--) if (/[=→]/.test(it.s[i]) && !/^(Direção|Sentido|A energia)/.test(it.s[i])) { fin = i; break; }
+  return `<div class="res"><div class="cad"><div class="tt">${it.k === "txt" ? "Resposta esperada" : "Resolução no formato do professor"}</div>${it.s.map((l, i) => `<div><div class="ln${it.k !== "txt" && i === fin ? " fin" : ""}">${esc(l)}</div></div>`).join("")}</div><div class="why"><b>Por que é assim:</b> ${esc(it.w)}</div></div>`;
+}
+function renderQ(q, box, track) {
+  let h = `<div class="card"><div class="qh"><span class="qn">${q.label || ("Questão " + q.n)}</span><span style="font-size:14px;color:var(--mut)">${esc(CAPS[q.c])}</span></div><p class="stmt">${esc(q.t)}</p>`;
+  if (q.fig) h += `<p class="fig">${esc(q.fig)}</p>`;
+  if (q.g) h += graph(q.g);
+  q.it.forEach((it, i) => {
+    h += `<div class="item" data-i="${i}">` + ((it.l || it.p) ? `<p>${it.l ? `<span class="lt">${esc(it.l)})</span>` : ""}${esc(it.p || "")}</p>` : "");
+    if (it.k === "num") h += `<div class="ans"><input inputmode="text" autocomplete="off" placeholder="Seu resultado (opcional)" aria-label="Seu resultado"><select aria-label="Unidade"><option value="">unidade</option>${Object.keys(UN).map(u => `<option>${u}</option>`).join("")}</select><button class="btn sec" data-a="chk">Conferir</button></div>`;
+    if (it.k === "mc") h += `<div class="ops">${it.ops.map((o, j) => `<button data-o="${j}"><b>${"abcde"[j]})</b> ${esc(o)}</button>`).join("")}</div>`;
+    h += `<div class="fbx"></div><div class="row"><button class="btn" data-a="res">Ver resolução</button></div><div class="rx"></div></div>`;
+  });
+  box.innerHTML = h + "</div>";
+  box.querySelectorAll(".item").forEach(el => {
+    const it = q.it[+el.dataset.i], fbx = el.querySelector(".fbx"), rx = el.querySelector(".rx");
+    const mark = v => { if (track) { ST[kOf(q, it)] = v; save(); renderNums(true); } };
+    let answered = false;
+    const show = self => { rx.innerHTML = resHTML(it) + (self && track ? `<div class="card selfc" style="margin:8px 0 0"><div class="row"><span>No caderno, você:</span><button class="btn ok sm" data-a="si">Acertei</button><button class="btn no sm" data-a="nao">Errei</button></div></div>` : ""); };
+    el.addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      if (b.dataset.a === "chk") { const r = checkNum(it, el.querySelector("input").value, el.querySelector("select").value); fbx.innerHTML = `<div class="fb ${r.c}">${esc(r.t)}</div>`; if (r.c === "ok") { answered = true; mark("ok"); show(false); el.querySelector('[data-a="res"]').style.display = "none"; } else if (r.c === "no") { answered = true; mark("no"); } }
+      else if (b.dataset.o !== undefined) { const j = +b.dataset.o, ok = j === it.g; answered = true; el.querySelectorAll(".ops button").forEach((x, k) => { x.disabled = true; x.classList.toggle("right", k === it.g); x.classList.toggle("wrong", k === j && !ok); }); fbx.innerHTML = `<div class="fb ${ok ? "ok" : "no"}">${ok ? "Certo!" : "Não é essa. A correta é a " + "abcde"[it.g] + "."}</div>`; mark(ok ? "ok" : "no"); show(false); el.querySelector('[data-a="res"]').style.display = "none"; }
+      else if (b.dataset.a === "res") { show(!answered); b.style.display = "none"; }
+      else if (b.dataset.a === "si" || b.dataset.a === "nao") { const si = b.dataset.a === "si"; mark(si ? "ok" : "no"); b.closest(".selfc").outerHTML = `<div class="fb ${si ? "ok" : "no"}">${si ? "Marcado como acerto." : "Marcado para refazer. Leia a explicação e tente de novo depois."}</div>`; }
+    });
+  });
+}
+
+/* ---------- praticar ---------- */
+let CAP = 1, ONLYERR = false, CUR = null;
+function qStatus(q) { const s = q.it.map(it => ST[kOf(q, it)]); if (s.every(x => x === "ok")) return "ok"; if (s.some(x => x === "no")) return s.some(x => x === "ok") ? "mix" : "no"; return s.some(x => x === "ok") ? "mix" : ""; }
+function renderNums(keep) {
+  $("#capsel").innerHTML = [1, 2, 3].map(c => `<button data-cap="${c}" class="${c === CAP ? "on" : ""}">${esc(CAPS[c])}</button>`).join("");
+  const list = Q.filter(q => q.c === CAP && (!ONLYERR || ["no", "mix"].includes(qStatus(q))));
+  $("#numstit").textContent = ONLYERR ? "Para refazer" : "Escolha a questão";
+  $("#soerr").textContent = ONLYERR ? "Mostrar todas" : "Só as que errei";
+  $("#nums").innerHTML = list.map(q => `<button data-q="${q.n}" class="${qStatus(q)}">${q.n}</button>`).join("") || "<span>Nada para refazer aqui.</span>";
+  if (!keep) { $("#qbox").innerHTML = ""; CUR = null; }
+}
+function openQ(n) {
+  const q = Q.find(x => x.n === n); if (!q) return; CUR = n;
+  const box = $("#qbox"); box.innerHTML = `<div id="qin"></div><div class="row" style="justify-content:space-between"><button class="btn sec" id="prev">← Anterior</button><button class="btn sec" id="next">Próxima →</button></div>`;
+  renderQ(q, $("#qin"), true);
+  const i = Q.indexOf(q);
+  $("#prev").disabled = i === 0; $("#next").disabled = i === Q.length - 1;
+  $("#prev").onclick = () => { CAP = Q[i - 1].c; renderNums(true); openQ(Q[i - 1].n); };
+  $("#next").onclick = () => { CAP = Q[i + 1].c; renderNums(true); openQ(Q[i + 1].n); };
+  box.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+$("#capsel").addEventListener("click", e => { const b = e.target.closest("[data-cap]"); if (b) { CAP = +b.dataset.cap; renderNums(); } });
+$("#nums").addEventListener("click", e => { const b = e.target.closest("[data-q]"); if (b) openQ(+b.dataset.q); });
+$("#soerr").onclick = () => { ONLYERR = !ONLYERR; renderNums(); };
+
+/* ---------- progresso ---------- */
+function renderProg() {
+  $("#prog").innerHTML = [1, 2, 3].map(c => { const its = Q.filter(q => q.c === c).flatMap(q => q.it.map(it => ST[kOf(q, it)])); const ok = its.filter(x => x === "ok").length, no = its.filter(x => x === "no").length; const qs = Q.filter(q => q.c === c);
+    return `<div class="card" style="margin:0"><b>${esc(CAPS[c])}</b><div style="font-size:14px;color:var(--mut)">Questões ${qs[0].n} a ${qs[qs.length - 1].n}</div><div class="bar2"><i style="width:${Math.round(ok / its.length * 100)}%"></i></div><div style="font-size:14px;margin-top:6px">${ok} de ${its.length} itens certos${no ? " · " + no + " para refazer" : ""}</div><button class="btn sec sm" style="margin-top:8px" data-open="${c}">Abrir</button></div>`; }).join("");
+}
+$("#prog").addEventListener("click", e => { const b = e.target.closest("[data-open]"); if (b) { CAP = +b.dataset.open; ONLYERR = false; go("prat"); } });
+
+/* ---------- fórmulas, aulas, vídeos ---------- */
+$("#forms").innerHTML = [1, 2, 3].map(c => `<h2>${esc(CAPS[c])}</h2><div class="card">${FORM[c].map(f => `<div class="frm"><div class="fx">${esc(f[0])}</div><span>${esc(f[1])}</span></div>`).join("")}</div>`).join("");
+function showAula(c) { $("#aulatabs").innerHTML = [1, 2, 3].map(x => `<button data-au="${x}" class="${x === c ? "on" : ""}">${esc(CAPS[x])}</button>`).join(""); $("#aulas").innerHTML = AULAS[c] + `<div class="row"><button class="btn" data-open2="${c}">Praticar esta matéria</button></div>`; }
+$("#aulatabs").addEventListener("click", e => { const b = e.target.closest("[data-au]"); if (b) showAula(+b.dataset.au); });
+$("#aulas").addEventListener("click", e => { const b = e.target.closest("[data-open2]"); if (b) { CAP = +b.dataset.open2; ONLYERR = false; go("prat"); } });
+$("#vids").innerHTML = [1, 2, 3].map(c => `<h2>${esc(CAPS[c])}</h2>` + VIDS[c].map(v => `<a class="vid" href="https://www.youtube.com/watch?v=${v[0]}" target="_blank" rel="noopener"><b>▶ ${esc(v[1])}</b><small>${esc(v[2])}</small></a>`).join("")).join("");
+
+/* ---------- treino extra ---------- */
+const ri = (a, b) => a + Math.floor(Math.random() * (b - a + 1)), pick = a => a[ri(0, a.length - 1)], f = fmt;
+const GEN = {
+1:[
+ () => { const F = ri(2, 30) * 10, d = ri(2, 12), A = pick([[0, "1", 1, "no mesmo sentido do deslocamento"], [60, "0,5", .5, "fazendo 60° com o deslocamento (cos 60° = 0,50)"], [180, "(−1)", -1, "no sentido contrário ao deslocamento"], [120, "(−0,5)", -.5, "fazendo 120° com o deslocamento (cos 120° = −0,50)"], [90, "0", 0, "perpendicular ao deslocamento"]]); const r = F * d * A[2];
+   return { c: 1, t: `Uma força constante de intensidade F = ${F} N atua sobre um bloco ${A[3]}. O bloco se desloca ${d} m. Determine o trabalho dessa força.`, it: [N("", "", r, "J", ["τ = F · d · cos α", `τ = ${F} · ${d} · cos ${A[0]}°`, `τ = ${F * d} · ${A[1]}`, `τ = ${f(r)} J`], "Multiplica força, distância e o cosseno do ângulo entre a força e o deslocamento. O sinal do cosseno decide o sinal do trabalho.")] }; },
+ () => { const t = pick([2, 4, 5, 10]), P = ri(2, 40) * 5, F = pick([10, 20, 50]), d = P * t / F;
+   return { c: 1, t: `Uma força de intensidade ${F} N desloca um corpo ${f(d)} m, na mesma direção e no mesmo sentido da força, em ${t} s. Determine o trabalho e a potência média.`, it: [N("a", "o trabalho", F * d, "J", ["τ = F · d · cos α", `τ = ${F} · ${f(d)} · 1`, `τ = ${f(F * d)} J`], "Mesmo sentido: cos 0° = 1."), N("b", "a potência média", P, "W", ["P = τ / Δt", `P = ${f(F * d)} / ${t}`, `P = ${P} W`], "Potência é o trabalho dividido pelo tempo.")] }; },
+ () => { const F = ri(2, 12) * 100, v = pick([10, 15, 20, 25, 30]);
+   return { c: 1, t: `Um veículo move-se em linha reta com velocidade constante de ${v} m/s, sujeito a uma força resistiva total de ${F} N. Qual é a potência da força motora?`, it: [N("", "", F * v, "W", ["P = F · v · cos α", `P = ${F} · ${v} · 1`, `P = ${F * v} W`], "Velocidade constante: a força motora é igual à resistiva. Com força e velocidade, usa P = F · v.")] }; },
+ () => { const m = ri(1, 9), h = ri(2, 8), up = Math.random() < .5, P = m * 10;
+   return { c: 1, t: `Um corpo de massa ${m} kg ${up ? "é erguido" : "desce"} ${h} m na vertical. Determine o trabalho da força peso nesse deslocamento. (g = 10 m/s²)`, it: [N("", "", (up ? -1 : 1) * P * h, "J", [`P = m · g = ${m} · 10 = ${P} N`, "τ = F · d · cos α", `τ = ${P} · ${h} · cos ${up ? "180°" : "0°"}`, `τ = ${up ? "−" : ""}${P * h} J`], up ? "Subindo, o peso (para baixo) é contrário ao movimento: trabalho negativo." : "Descendo, o peso tem o mesmo sentido do movimento: trabalho positivo.")] }; },
+ () => { const m = ri(2, 20) * 10, h = pick([2, 3, 4, 5]), t = pick([2, 4, 5]), tr = m * 10 * h;
+   return { c: 1, t: `Um motor eleva um bloco de massa ${m} kg até uma altura de ${h} m, em ${t} s, com movimento uniforme. Determine a potência do motor. (g = 10 m/s²)`, it: [N("", "", tr / t, "W", [`F = P = m · g = ${m} · 10 = ${m * 10} N`, `τ = F · d · cos α = ${m * 10} · ${h} · 1 = ${tr} J`, "P = τ / Δt", `P = ${tr} / ${t}`, `P = ${f(tr / t)} W`], "Movimento uniforme: a força do motor é igual ao peso. Acha o trabalho e divide pelo tempo.")] }; }],
+2:[
+ () => { const m = ri(1, 10), v = ri(2, 12);
+   return { c: 2, t: `Um corpo de massa ${m} kg move-se com velocidade de ${v} m/s. Calcule sua energia cinética.`, it: [N("", "", m * v * v / 2, "J", ["Ec = m · v² / 2", `Ec = ${m} · ${v}² / 2`, `Ec = ${m * v * v} / 2`, `Ec = ${f(m * v * v / 2)} J`], "Primeiro eleva a velocidade ao quadrado, depois multiplica pela massa e divide por 2.")] }; },
+ () => { const h = pick([0.8, 1.8, 3.2, 5, 7.2, 20, 45]), v = Math.sqrt(20 * h);
+   return { c: 2, t: `Um corpo é abandonado de uma altura de ${f(h)} m. Desprezando a resistência do ar, determine a velocidade ao atingir o solo. (g = 10 m/s²)`, it: [N("", "", v, "m/s", ["Em = Em₀", "Ec = Ep₀", "m · v² / 2 = m · g · h", `v² / 2 = 10 · ${f(h)}`, `v² = ${f(20 * h)}`, `v = ${f(v)} m/s`], "No alto só tem energia de altura; embaixo, só de movimento. As duas são iguais e a massa corta.")] }; },
+ () => { const k = pick([100, 200, 400, 500, 800, 1000]), x = pick([5, 10, 20, 30]), r = k * (x / 100) ** 2 / 2;
+   return { c: 2, t: `Uma mola de constante elástica k = ${k} N/m está deformada de ${x} cm. Determine a energia potencial elástica armazenada.`, it: [N("", "", r, "J", [`x = ${x} cm = ${f(x / 100)} m`, "Epe = k · x² / 2", `Epe = ${k} · (${f(x / 100)})² / 2`, `Epe = ${f(r)} J`], "Passe a deformação para metros antes de elevar ao quadrado.")] }; },
+ () => { const m = pick([1, 2, 4, 8]), v = pick([1, 2, 3, 4]), x = pick([0.1, 0.2, 0.4, 0.5]), k = m * v * v / (x * x);
+   return { c: 2, t: `Um corpo de massa ${m} kg atinge uma mola de constante elástica k = ${f(k)} N/m com velocidade de ${v} m/s. Desprezando os atritos, determine a deformação da mola até o corpo parar.`, it: [N("", "", x, "m", ["Em = Em₀", "Epe = Ec", "k · x² / 2 = m · v² / 2", `${f(k)} · x² / 2 = ${m} · ${v}² / 2`, `x² = ${f(x * x)}`, `x = ${f(x)} m`], "O corpo para quando toda a energia de movimento ficou guardada na mola.")] }; },
+ () => { const m = ri(2, 10) * 100, v = pick([10, 20, 30]), d = pick([10, 20, 25, 40, 50]), e = m * v * v / 2;
+   return { c: 2, t: `Um automóvel de massa ${m} kg, a ${v} m/s, é freado e para após percorrer ${d} m. Determine o trabalho da força de atrito e a intensidade dessa força.`, it: [N("a", "o trabalho da força de atrito", -e, "J", ["τ = ΔEc", "τ = m · v² / 2 − m · v₀² / 2", `τ = 0 − ${m} · ${v}² / 2`, `τ = −${e} J`], "O carro para: a energia cinética final é zero. O atrito tirou tudo."), N("b", "a intensidade da força de atrito", e / d, "N", ["τ = F · d · cos α", `−${e} = Fat · ${d} · (−1)`, `Fat = ${f(e / d)} N`], "O atrito é contra o movimento: cos 180° = −1.", { m: 1 })] }; }],
+3:[
+ () => { const F = ri(2, 50) * 10, t = pick([0.1, 0.2, 0.5, 2, 4, 5]);
+   return { c: 3, t: `Uma força constante de intensidade ${F} N atua sobre um corpo durante ${f(t)} s. Determine a intensidade do impulso dessa força.`, it: [N("", "", F * t, "N·s", ["I = F · Δt", `I = ${F} · ${f(t)}`, `I = ${f(F * t)} N·s`], "Impulso é força vezes tempo.")] }; },
+ () => { const m = pick([0.2, 0.5, 2, 4, 5]), v0 = ri(2, 10), F = pick([10, 20, 30, 40]), t = pick([2, 3, 5]), Q = m * v0 + F * t;
+   return { c: 3, t: `Uma partícula de massa ${f(m)} kg, com velocidade de ${v0} m/s, sofre a ação de uma força constante de ${F} N durante ${t} s, no mesmo sentido do movimento. Determine a quantidade de movimento final e a velocidade final.`, it: [N("a", "a quantidade de movimento final", Q, "kg·m/s", ["I = ΔQ", "F · Δt = Q − Q₀", `${F} · ${t} = Q − ${f(m)} · ${v0}`, `Q = ${f(Q)} kg·m/s`], "O impulso é quanto a quantidade de movimento aumenta."), N("b", "a velocidade final", Q / m, "m/s", ["Q = m · v", `${f(Q)} = ${f(m)} · v`, `v = ${f(Q / m)} m/s`], "Com Q e a massa, isola a velocidade.")] }; },
+ () => { const m = pick([0.1, 0.2, 0.5]), v = pick([10, 20, 30]), t = pick([0.1, 0.2]), I = 2 * m * v;
+   return { c: 3, t: `Uma bola de massa ${f(m)} kg atinge uma parede com velocidade de ${v} m/s e volta com a mesma velocidade em módulo. O choque dura ${f(t)} s. Determine a intensidade do impulso e a da força média.`, it: [N("a", "a intensidade do impulso", I, "N·s", ["I = ΔQ", "I = m · v − m · v₀", `I = ${f(m)} · (−${v}) − ${f(m)} · ${v}`, `I = −${f(I)} N·s → intensidade: ${f(I)} N·s`], "A bola volta: a velocidade final entra negativa.", { m: 1 }), N("b", "a intensidade da força média", I / t, "N", ["I = F · Δt", `${f(I)} = F · ${f(t)}`, `F = ${f(I / t)} N`], "Com o impulso e o tempo, isola a força.", { m: 1 })] }; },
+ () => { const mp = pick([2, 4, 5]), vp = pick([200, 300, 400, 600]), mc = pick([500, 1000, 2000]), vc = mp * vp / mc;
+   return { c: 3, t: `Um canhão de massa ${mc} kg, em repouso, dispara horizontalmente um projétil de massa ${mp} kg com velocidade de ${vp} m/s. Desprezando o atrito, determine o módulo da velocidade de recuo do canhão.`, it: [N("", "", vc, "m/s", ["Q₀ = Q", "0 = mp · vp + mc · vc", `0 = ${mp} · ${vp} + ${mc} · vc`, `vc = −${f(vc)} m/s → módulo: ${f(vc)} m/s`], "Antes tudo está parado (Q₀ = 0). Depois a soma continua zero: o canhão vai para trás.", { m: 1 })] }; },
+ () => { const pr = pick([[0.1, 0.9, 1], [0.2, 1.8, 2], [0.5, 4.5, 5], [0.2, 0.8, 1]]), m1 = pr[0], M = pr[1], mt = pr[2], v1 = pick([100, 200, 300]), vc = Math.round(m1 * v1 / mt * 1000) / 1000;
+   return { c: 3, t: `Uma bala de massa ${f(m1)} kg, a ${v1} m/s, atinge um bloco de massa ${f(M)} kg em repouso sobre um plano sem atrito e fica presa nele. Determine a velocidade do conjunto após o impacto.`, it: [N("", "", vc, "m/s", ["Q₀ = Q", "mp · vp + mb · vb = (mp + mb) · vc", `${f(m1)} · ${v1} + ${f(M)} · 0 = ${f(mt)} · vc`, `${f(m1 * v1)} = ${f(mt)} · vc`, `vc = ${f(vc)} m/s`], "Depois da batida os dois andam grudados, então soma as massas.")] }; }]};
+let EXC = 0, EXN = 0;
+function newExtra() { const c = EXC || ri(1, 3), q = pick(GEN[c])(); q.n = "x" + (++EXN); q.label = "Treino extra"; q.fig = ""; q.g = null; renderQ(q, $("#exbox"), false); }
+function exSel() { $("#exsel").innerHTML = [[0, "Misturado"], [1, CAPS[1]], [2, CAPS[2]], [3, CAPS[3]]].map(x => `<button data-ex="${x[0]}" class="${x[0] === EXC ? "on" : ""}">${esc(x[1])}</button>`).join(""); }
+$("#exsel").addEventListener("click", e => { const b = e.target.closest("[data-ex]"); if (b) { EXC = +b.dataset.ex; exSel(); newExtra(); } });
+$("#exnew").onclick = newExtra;
+
+renderProg(); showAula(1); renderNums(); exSel(); newExtra();
+</script>
+</body>
+</html>
