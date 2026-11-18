@@ -222,26 +222,26 @@ const W = (F, d, c, r) => ["τ = F · d · cos α", `τ = ${F} · ${d} · ${c}`,
 
 /* ================= CAPÍTULO 1 — TRABALHO E POTÊNCIA ================= */
 q(15, 1, "Determine o trabalho realizado pela força constante F = 20 N, que atua sobre um pequeno bloco que se desloca ao longo de um segmento de reta de extensão d = 5,0 m, nos casos indicados.", [
-  N("a", "F no mesmo sentido do deslocamento (α = 0°, cos 0° = 1,0)", 100, "J", W(20, 5, 1, 100), "A força empurra para o mesmo lado que o bloco anda. Ângulo 0°, cos 0° = 1. O trabalho é positivo: a força ajuda o movimento."),
-  N("b", "F no sentido contrário ao deslocamento (α = 180°, cos 180° = −1,0)", -100, "J", W(20, 5, "(−1)", "−100"), "A força aponta para trás e o bloco anda para a frente. cos 180° = −1, então o trabalho fica negativo: a força atrapalha o movimento."),
-  N("c", "F perpendicular ao deslocamento (α = 90°, cos 90° = 0)", 0, "J", W(20, 5, 0, 0), "Força de pé (90°) não ajuda nem atrapalha quem anda de lado. cos 90° = 0, então o trabalho é zero."),
-  N("d", "F fazendo 60° com o deslocamento (cos 60° = 0,50)", 50, "J", ["τ = F · d · cos α", "τ = 20 · 5 · 1/2", "τ = 50 J"], "Só uma parte da força puxa para a frente. O cos 60° = 0,5 mostra que metade da força trabalha."),
-  N("e", "F fazendo 120° com o deslocamento (cos 120° = −0,50)", -50, "J", ["τ = F · d · cos α", "τ = 20 · 5 · (−1/2)", "τ = −50 J"], "Ângulo maior que 90°: a força puxa um pouco para trás. Por isso o cosseno é negativo e o trabalho também."),
+  N("a", "F no mesmo sentido do deslocamento (α = 0°, cos 0° = 1,0)", 100, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 0°", "τ = 20 · 5 · 1", "τ = 100 J"], "A força empurra para o mesmo lado que o bloco anda. Ângulo 0°, cos 0° = 1. O trabalho é positivo: a força ajuda o movimento."),
+  N("b", "F no sentido contrário ao deslocamento (α = 180°, cos 180° = −1,0)", -100, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 180°", "τ = 20 · 5 · (−1)", "τ = −100 J"], "A força aponta para trás e o bloco anda para a frente. cos 180° = −1, então o trabalho fica negativo: a força atrapalha o movimento."),
+  N("c", "F perpendicular ao deslocamento (α = 90°, cos 90° = 0)", 0, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 90°", "τ = 20 · 5 · 0", "τ = 0 J"], "Força de pé (90°) não ajuda nem atrapalha quem anda de lado. cos 90° = 0, então o trabalho é zero."),
+  N("d", "F fazendo 60° com o deslocamento (cos 60° = 0,50)", 50, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 60°", "τ = 20 · 5 · 0,5", "τ = 50 J"], "Só uma parte da força puxa para a frente. O cos 60° = 0,5 mostra que metade da força trabalha."),
+  N("e", "F fazendo 120° com o deslocamento (cos 120° = −0,50)", -50, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 120°", "τ = 20 · 5 · (−0,5)", "τ = −50 J"], "Ângulo maior que 90°: a força puxa um pouco para trás. Por isso o cosseno é negativo e o trabalho também."),
 ], "Em todos os casos o bloco vai de A até B, para a direita. O que muda é o ângulo entre F e d.");
 q(16, 1, "Um pequeno bloco desliza num trilho reto, sem atrito, submetido à ação de uma força constante de intensidade F = 250 N. Calcule o trabalho desta força num deslocamento de 10 m, no mesmo sentido da força.", [
   N("", "", 2500, "J", ["τ = F · d · cos α", "τ = 250 · 10 · cos 0°", "τ = 250 · 10 · 1", "τ = 2500 J"], "\"Mesmo sentido\" quer dizer ângulo 0°. cos 0° = 1. Aí é só multiplicar força por distância."),
 ]);
 q(17, 1, "Uma força F, cuja intensidade é igual a 2,0 N, desloca de 5,0 m, num plano horizontal, um pequeno bloco. A força F faz um ângulo de 60° com o deslocamento. Qual o trabalho que F realiza? (cos 60° = 0,50)", [
-  N("", "", 5, "J", ["τ = F · d · cos α", "τ = 2 · 5 · cos 60°", "τ = 10 · 0,5", "τ = 5 J"], "A força está inclinada. Multiplica força, distância e o cosseno do ângulo que o enunciado deu."),
+  N("", "", 5, "J", ["τ = F · d · cos α", "τ = 2 · 5 · cos 60°", "τ = 2 · 5 · 0,5", "τ = 5 J"], "A força está inclinada. Multiplica força, distância e o cosseno do ângulo que o enunciado deu."),
 ]);
 q(18, 1, "Sob a ação de uma força constante de intensidade F = 200 N, um corpo desliza, sem atrito, na direção e no sentido da força atuante. Determine o trabalho da força num percurso de 5 m do corpo.", [
-  N("", "", 1000, "J", ["τ = F · d · cos α", "τ = 200 · 5 · cos 0°", "τ = 1000 · 1", "τ = 1000 J"], "Mesma direção e mesmo sentido: α = 0° e cos 0° = 1."),
+  N("", "", 1000, "J", ["τ = F · d · cos α", "τ = 200 · 5 · cos 0°", "τ = 200 · 5 · 1", "τ = 1000 J"], "Mesma direção e mesmo sentido: α = 0° e cos 0° = 1."),
 ]);
 q(19, 1, "Determine o trabalho de cada força indicada na figura no deslocamento d = 10 m. (cos θ = 0,80)", [
-  N("FN", "Trabalho da normal FN = 40 N (para cima)", 0, "J", ["τ = F · d · cos α", "τ = 40 · 10 · cos 90°", "τ = 400 · 0", "τ = 0 J"], "A normal aponta para cima e o bloco anda de lado: 90°. Trabalho zero."),
-  N("Fat", "Trabalho do atrito Fat = 4,0 N (para trás)", -40, "J", ["τ = F · d · cos α", "τ = 4 · 10 · cos 180°", "τ = 40 · (−1)", "τ = −40 J"], "O atrito sempre aponta contra o movimento: 180°. Trabalho negativo."),
-  N("P", "Trabalho do peso P = 100 N (para baixo)", 0, "J", ["τ = F · d · cos α", "τ = 100 · 10 · cos 90°", "τ = 1000 · 0", "τ = 0 J"], "O peso aponta para baixo e o bloco anda de lado: 90°. Trabalho zero."),
-  N("F", "Trabalho de F = 100 N (inclinada de θ para cima)", 800, "J", ["τ = F · d · cos α", "τ = 100 · 10 · 0,80", "τ = 800 J"], "F está inclinada. Usa o cos θ que o enunciado deu (0,80)."),
+  N("FN", "Trabalho da normal FN = 40 N (para cima)", 0, "J", ["τ = F · d · cos α", "τ = 40 · 10 · cos 90°", "τ = 40 · 10 · 0", "τ = 0 J"], "A normal aponta para cima e o bloco anda de lado: 90°. Trabalho zero."),
+  N("Fat", "Trabalho do atrito Fat = 4,0 N (para trás)", -40, "J", ["τ = F · d · cos α", "τ = 4 · 10 · cos 180°", "τ = 4 · 10 · (−1)", "τ = −40 J"], "O atrito sempre aponta contra o movimento: 180°. Trabalho negativo."),
+  N("P", "Trabalho do peso P = 100 N (para baixo)", 0, "J", ["τ = F · d · cos α", "τ = 100 · 10 · cos 90°", "τ = 100 · 10 · 0", "τ = 0 J"], "O peso aponta para baixo e o bloco anda de lado: 90°. Trabalho zero."),
+  N("F", "Trabalho de F = 100 N (inclinada de θ para cima)", 800, "J", ["τ = F · d · cos α", "τ = 100 · 10 · cos θ", "τ = 100 · 10 · 0,80", "τ = 800 J"], "F está inclinada. Usa o cos θ que o enunciado deu (0,80)."),
 ], "Bloco indo de A para B (para a direita). Forças: FN = 40 N para cima, P = 100 N para baixo, Fat = 4,0 N para a esquerda e F = 100 N inclinada de θ acima da horizontal, para a direita.");
 q(20, 1, "(Fund. Carlos Chagas-SP) Em uma das alternativas está representada uma força F, de intensidade constante, aplicada sobre um móvel. Em qual situação o trabalho realizado por essa força é igual a zero?", [
   M("", "Ângulo entre F e o deslocamento d em cada alternativa:", ["90°", "225°", "180°", "0°", "45°"], 0, ["τ = F · d · cos α", "cos 90° = 0", "τ = 0 → alternativa a"], "O trabalho só zera quando o cosseno é zero. Isso acontece em 90°: força perpendicular ao deslocamento."),
@@ -250,44 +250,44 @@ q(21, 1, "(UF-MG) Um bloco desloca-se sobre uma superfície horizontal, movendo-
   M("", "", ["apenas as forças F e P realizam trabalho.", "apenas a força F realiza trabalho.", "apenas a força P realiza trabalho.", "apenas as forças F e Fa realizam trabalho.", "todas as forças realizam trabalho."], 3, ["FN e P: α = 90° → τ = 0", "F: α = 0° → τ positivo", "Fa: α = 180° → τ negativo", "Alternativa d"], "Só faz trabalho a força que está na linha do movimento. F (para a frente) e Fa (para trás) estão na horizontal. Normal e peso estão de pé, a 90°."),
 ], "Forças no bloco: FN para cima, P para baixo, F para a direita e Fa (atrito) para a esquerda.");
 q(22, 1, "Determine o trabalho realizado pela força peso de um corpo de massa m = 20 kg, em um local onde a aceleração da gravidade é g = 10 m/s², nos seguintes deslocamentos:", [
-  N("a", "de A para B", 600, "J", ["P = m · g = 20 · 10 = 200 N", "τ = F · d · cos α", "τ = 200 · 3 · cos 0°", "τ = 600 J"], "O corpo desce 3 m. O peso aponta para baixo, mesmo sentido da descida: trabalho positivo."),
+  N("a", "de A para B", 600, "J", ["P = m · g = 20 · 10 = 200 N", "τ = F · d · cos α", "τ = 200 · 3 · cos 0°", "τ = 200 · 3 · 1", "τ = 600 J"], "O corpo desce 3 m. O peso aponta para baixo, mesmo sentido da descida: trabalho positivo."),
   N("b", "de B para A", -600, "J", ["τ = F · d · cos α", "τ = 200 · 3 · cos 180°", "τ = 200 · 3 · (−1)", "τ = −600 J"], "O corpo sobe 3 m, mas o peso aponta para baixo. Sentidos opostos: trabalho negativo."),
-  N("c", "de A para C", 600, "J", ["Mesmo cálculo de A para B: o corpo desce 3 m", "τ = 200 · 3 · 1", "τ = 600 J"], "Para o peso só importa quanto o corpo subiu ou desceu, não o caminho. De A até C ele também desce 3 m."),
-  N("d", "de D para A", -600, "J", ["Mesmo cálculo de B para A: o corpo sobe 3 m", "τ = 200 · 3 · (−1)", "τ = −600 J"], "De D até A o corpo sobe 3 m. Subiu: trabalho do peso negativo."),
-  N("e", "de A para E", 0, "J", ["A e E estão na mesma altura", "τ = F · d · cos 90°", "τ = 0 J"], "A e E têm a mesma altura. O corpo só anda de lado, a 90° do peso. Trabalho zero."),
+  N("c", "de A para C", 600, "J", ["τ = F · d · cos α", "τ = 200 · 3 · cos 0°", "τ = 200 · 3 · 1", "τ = 600 J"], "Para o peso só importa quanto o corpo subiu ou desceu, não o caminho. De A até C ele também desce 3 m."),
+  N("d", "de D para A", -600, "J", ["τ = F · d · cos α", "τ = 200 · 3 · cos 180°", "τ = 200 · 3 · (−1)", "τ = −600 J"], "De D até A o corpo sobe 3 m. Subiu: trabalho do peso negativo."),
+  N("e", "de A para E", 0, "J", ["τ = F · d · cos α", "τ = 200 · 4 · cos 90°", "τ = 200 · 4 · 0", "τ = 0 J"], "A e E têm a mesma altura. O corpo só anda de lado, a 90° do peso. Trabalho zero."),
 ], "A está 3,0 m acima da linha do chão, onde ficam B (logo abaixo de A), C e D. E está na mesma altura de A, 4,0 m à direita. AC = 5,0 m e AD = 8,0 m (medidos na diagonal).");
 q(23, 1, "Um ponto material de massa m = 2,0 kg é lançado a partir do solo, no ponto A, descrevendo a trajetória ABC (sobe até B, a h = 5,0 m, e volta ao solo em C). Determine o trabalho realizado pela força peso durante os deslocamentos. Considere g = 10 m/s².", [
   N("a", "de A para B", -100, "J", ["P = m · g = 2 · 10 = 20 N", "τ = F · d · cos α", "τ = 20 · 5 · cos 180°", "τ = 20 · 5 · (−1)", "τ = −100 J"], "Na subida o peso aponta para baixo e o corpo vai para cima. Trabalho negativo."),
   N("b", "de B para C", 100, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 0°", "τ = 20 · 5 · 1", "τ = 100 J"], "Na descida o peso e o movimento vertical têm o mesmo sentido. Trabalho positivo."),
-  N("c", "de A para C", 0, "J", ["τ = τ(AB) + τ(BC)", "τ = −100 + 100", "τ = 0 J"], "A e C estão na mesma altura (o solo). O que o peso tirou na subida, devolveu na descida."),
+  N("c", "de A para C", 0, "J", ["τ total = τ(AB) + τ(BC)", "τ = −100 + 100", "τ = 0 J"], "A e C estão na mesma altura (o solo). O que o peso tirou na subida, devolveu na descida."),
 ]);
 q(24, 1, "Um corpo de massa m = 2 kg é lançado horizontalmente a partir do ponto A, passando sucessivamente pelos pontos B, C e D (no solo). Sabendo que g = 10 m/s², determine o trabalho realizado pela força peso entre os pontos:", [
-  N("a", "A e B", 20, "J", ["P = m · g = 2 · 10 = 20 N", "τ = F · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De A (4 m) até B (3 m) o corpo desce 1 m. Usa só o quanto desceu."),
-  N("b", "B e C", 20, "J", ["τ = F · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De B (3 m) até C (2 m) desce 1 m."),
-  N("c", "C e D", 40, "J", ["τ = F · d · cos α", "τ = 20 · 2 · 1", "τ = 40 J"], "De C (2 m) até D (solo) desce 2 m."),
-  N("d", "A e D", 80, "J", ["τ = F · d · cos α", "τ = 20 · 4 · 1", "τ = 80 J"], "De A até o solo desce 4 m. Também dá para somar: 20 + 20 + 40."),
+  N("a", "A e B", 20, "J", ["P = m · g = 2 · 10 = 20 N", "τ = F · d · cos α", "τ = 20 · 1 · cos 0°", "τ = 20 · 1 · 1", "τ = 20 J"], "De A (4 m) até B (3 m) o corpo desce 1 m. Usa só o quanto desceu."),
+  N("b", "B e C", 20, "J", ["τ = F · d · cos α", "τ = 20 · 1 · cos 0°", "τ = 20 · 1 · 1", "τ = 20 J"], "De B (3 m) até C (2 m) desce 1 m."),
+  N("c", "C e D", 40, "J", ["τ = F · d · cos α", "τ = 20 · 2 · cos 0°", "τ = 20 · 2 · 1", "τ = 40 J"], "De C (2 m) até D (solo) desce 2 m."),
+  N("d", "A e D", 80, "J", ["τ = F · d · cos α", "τ = 20 · 4 · cos 0°", "τ = 20 · 4 · 1", "τ = 80 J"], "De A até o solo desce 4 m. Também dá para somar: 20 + 20 + 40."),
 ], "Alturas em relação ao solo: A = 4 m, B = 3 m, C = 2 m, D = 0.");
 q(25, 1, "Uma força F atua sobre um corpo na mesma direção e no mesmo sentido do deslocamento. O gráfico mostra a intensidade de F em função da posição s. Determine o trabalho realizado pela força F quando o corpo sofre um deslocamento de s = 0 até s = 10 m e, em seguida, de s = 10 m até s = 20 m.", [
   N("1", "de s = 0 até s = 10 m", 100, "J", ["τ ≙ área (F × d)", "τ = b · h (retângulo)", "τ = 10 · 10", "τ = 100 J"], "Quando tem gráfico de força por distância, o trabalho é a área embaixo da linha. De 0 a 10 m é um retângulo."),
   N("2", "de s = 10 m até s = 20 m", 150, "J", ["τ ≙ área (F × d)", "τ = (B + b) · h / 2 (trapézio)", "τ = (20 + 10) · 10 / 2", "τ = 150 J"], "De 10 a 20 m a força cresce de 10 N para 20 N. A figura é um trapézio."),
 ], "", { xl: "s (m)", yl: "F (N)", p: [[0, 10], [10, 10], [20, 20]], xt: [0, 10, 20], yt: [10, 20] });
 q(26, 1, "Uma força de intensidade 10 N é aplicada a um corpo, provocando um deslocamento de 2,0 m na mesma direção e no mesmo sentido da força, durante 5,0 s. Determine:", [
-  N("a", "o trabalho realizado pela força", 20, "J", ["τ = F · d · cos α", "τ = 10 · 2 · cos 0°", "τ = 20 J"], "Mesmo sentido: cos 0° = 1."),
+  N("a", "o trabalho realizado pela força", 20, "J", ["τ = F · d · cos α", "τ = 10 · 2 · cos 0°", "τ = 10 · 2 · 1", "τ = 20 J"], "Mesmo sentido: cos 0° = 1."),
   N("b", "a potência média dessa força", 4, "W", ["P = τ / Δt", "P = 20 / 5", "P = 4 W"], "Potência é o trabalho dividido pelo tempo: quanto trabalho por segundo."),
 ]);
 q(27, 1, "Um automóvel desloca-se em um trecho horizontal com velocidade constante de 20 m/s, embora esteja sujeito a uma força resistiva total de 800 N, contrária ao movimento. Qual deve ser a potência da força motora para manter o automóvel em movimento?", [
-  N("", "", 16000, "W", ["P = F · v · cos α", "P = 800 · 20 · 1", "P = 16000 W"], "Velocidade constante: o motor faz exatamente a mesma força que a resistência (800 N). Com força e velocidade, usa P = F · v."),
+  N("", "", 16000, "W", ["P = F · v · cos α", "P = 800 · 20 · cos 0°", "P = 800 · 20 · 1", "P = 16000 W"], "Velocidade constante: o motor faz exatamente a mesma força que a resistência (800 N). Com força e velocidade, usa P = F · v."),
 ]);
 q(28, 1, "O gráfico apresenta a variação da potência P de uma força F, que atua sobre um corpo na direção de seu movimento. Determine o trabalho realizado por essa força nos intervalos de tempo:", [
   N("a", "de 0 a 10 s", 300, "J", ["τ ≙ área (P × Δt)", "τ = b · h / 2 (triângulo)", "τ = 10 · 60 / 2", "τ = 300 J"], "Gráfico de potência por tempo: a área dá o trabalho. De 0 a 10 s é um triângulo."),
-  N("b", "de 10 a 20 s", 600, "J", ["τ = b · h (retângulo)", "τ = 10 · 60", "τ = 600 J"], "De 10 a 20 s a potência fica parada em 60 W: retângulo."),
+  N("b", "de 10 a 20 s", 600, "J", ["τ ≙ área (P × Δt)", "τ = b · h (retângulo)", "τ = 10 · 60", "τ = 600 J"], "De 10 a 20 s a potência fica parada em 60 W: retângulo."),
   N("c", "de 0 a 20 s", 900, "J", ["τ total = τ₁ + τ₂", "τ = 300 + 600", "τ = 900 J"], "É só somar os dois pedaços."),
 ], "", { xl: "t (s)", yl: "P (W)", p: [[0, 0], [10, 60], [20, 60]], xt: [0, 10, 20], yt: [60] });
 q(29, 1, "Um motor é empregado para elevar um bloco de massa 5,0 · 10² kg até uma altura de 3,0 m, em 2,0 s, com movimento retilíneo uniforme. Considerando g = 10 m/s², determine a potência teórica do motor.", [
-  N("", "", 7500, "W", ["Fm = P = m · g = 5 · 10² · 10 = 5000 N", "τ = F · d · cos α = 5000 · 3 · 1 = 15000 J", "τ = P · Δt", "15000 = P · 2", "P = 7500 W"], "Movimento uniforme: a força do motor é igual ao peso. Primeiro acha o trabalho para subir 3 m, depois divide pelo tempo. Pode responder 7500 W, 7,5 · 10³ W ou 7,5 kW."),
+  N("", "", 7500, "W", ["Peso = m · g = 5 · 10² · 10 = 5000 N", "Força do motor: F = 5000 N", "τ = F · d · cos α", "τ = 5000 · 3 · cos 0°", "τ = 15000 J", "P = τ / Δt", "P = 15000 / 2", "P = 7500 W"], "Movimento uniforme: a força do motor é igual ao peso. Primeiro acha o trabalho para subir 3 m, depois divide pelo tempo. Pode responder 7500 W, 7,5 · 10³ W ou 7,5 kW."),
 ]);
 q(30, 1, "Utilizando uma corda e uma polia, uma pessoa ergue um bloco de massa 20 kg com velocidade constante de 2,0 · 10⁻¹ m/s. Sabendo que g = 10 m/s², determine a potência da força desenvolvida pela pessoa.", [
-  N("", "", 40, "W", ["F = P = m · g = 20 · 10 = 200 N", "P = F · v · cos α", "P = 200 · 2 · 10⁻¹ · 1", "P = 40 W"], "Velocidade constante: a pessoa puxa com força igual ao peso (200 N). 2,0 · 10⁻¹ é 0,2 m/s."),
+  N("", "", 40, "W", ["Peso = m · g = 20 · 10 = 200 N", "Força da pessoa: F = 200 N", "v = 2,0 · 10⁻¹ = 0,2 m/s", "P = F · v · cos α", "P = 200 · 0,2 · cos 0°", "P = 200 · 0,2 · 1", "P = 40 W"], "Velocidade constante: a pessoa puxa com força igual ao peso (200 N). 2,0 · 10⁻¹ é 0,2 m/s."),
 ]);
 q(31, 1, "Um corpo sobe um plano inclinado, sem atrito, sendo puxado por uma força F paralela ao plano. A potência da força F varia com o tempo conforme o gráfico. Determine o trabalho realizado pela força F durante os dois primeiros segundos do movimento.", [
   N("", "", 75, "J", ["τ ≙ área (P × Δt)", "τ = (B + b) · h / 2 (trapézio)", "τ = (2 + 1) · 50 / 2", "τ = 75 J"], "A área embaixo do gráfico de potência é o trabalho. A figura é um trapézio: base maior 2, base menor 1, altura 50."),
@@ -342,7 +342,7 @@ q(45, 2, "A uma altura de 20 m, um corpo em repouso possui, em relação ao solo
   N("", "", 10, "J", ["Em = Em₀", "Ec + Ep = Ep₀", "Ep (10 m) = metade de 20 J = 10 J", "Ec + 10 = 20", "Ec = 10 J"], "Na metade da altura, a energia potencial é a metade (10 J). O que falta para os 20 J do começo virou energia cinética."),
 ]);
 q(46, 2, "Uma mola helicoidal é tracionada por uma força de intensidade 4,0 · 10² N, sofrendo uma deformação elástica de 4,0 cm. Qual é a energia potencial elástica armazenada nessa mola quando sua deformação for de 2,0 cm?", [
-  N("", "", 2, "J", ["x = 4 cm = 0,04 m", "Fe = k · x", "4 · 10² = k · 0,04", "k = 10000 N/m", "Epe = k · x² / 2", "Epe = 10000 · (0,02)² / 2", "Epe = 2 J"], "Duas etapas. Primeiro descobre o k da mola com Fe = k · x. Depois usa o k na energia elástica com a nova deformação. Sempre passe cm para m."),
+  N("", "", 2, "J", ["x = 4 cm = 0,04 m", "Fe = k · x", "4 · 10² = k · 0,04", "k = 10000 N/m", "x = 2 cm = 0,02 m", "Epe = k · x² / 2", "Epe = 10000 · (0,02)² / 2", "Epe = 2 J"], "Duas etapas. Primeiro descobre o k da mola com Fe = k · x. Depois usa o k na energia elástica com a nova deformação. Sempre passe cm para m."),
 ]);
 q(47, 2, "Um corpo está preso à extremidade livre de uma mola helicoidal de constante elástica k = 8,0 · 10² N/m. Determine a energia potencial elástica armazenada pelo sistema quando a mola estiver distendida de 10 cm.", [
   N("", "", 4, "J", ["x = 10 cm = 0,1 m", "Epe = k · x² / 2", "Epe = 8 · 10² · (0,1)² / 2", "Epe = 800 · 0,01 / 2", "Epe = 4 J"], "Mola esticada guarda energia. Passe 10 cm para 0,1 m antes de elevar ao quadrado."),
@@ -351,7 +351,7 @@ q(48, 2, "Considerando a situação do exercício anterior (k = 8,0 · 10² N/m)
   N("", "", 0.2, "m", ["Epe = k · x² / 2", "16 = 8 · 10² · x² / 2", "16 = 400 · x²", "x² = 0,04", "x = 0,2 m (20 cm)"], "Agora a energia é dada e a deformação é a pergunta. Isola o x² e tira a raiz. 0,2 m é o mesmo que 20 cm."),
 ]);
 q(49, 2, "Uma força de intensidade 2,0 · 10² N provoca uma deformação de 5,0 cm em uma mola helicoidal. Qual é a energia potencial elástica armazenada pela mola quando ela estiver deformada de 20 cm?", [
-  N("", "", 80, "J", ["Fe = k · x", "2 · 10² = k · 0,05", "k = 4000 N/m", "Epe = k · x² / 2", "Epe = 4000 · (0,2)² / 2", "Epe = 4000 · 0,04 / 2", "Epe = 80 J"], "Primeiro acha o k (200 N para 0,05 m). Depois calcula a energia com 20 cm = 0,2 m.", { e: { "2000": "Faltou achar o k (k = F / x = 4000 N/m) e passar 20 cm para 0,2 m." } }),
+  N("", "", 80, "J", ["x = 5 cm = 0,05 m", "Fe = k · x", "2 · 10² = k · 0,05", "k = 4000 N/m", "x = 20 cm = 0,2 m", "Epe = k · x² / 2", "Epe = 4000 · (0,2)² / 2", "Epe = 4000 · 0,04 / 2", "Epe = 80 J"], "Primeiro acha o k (200 N para 0,05 m). Depois calcula a energia com 20 cm = 0,2 m.", { e: { "2000": "Faltou achar o k (k = F / x = 4000 N/m) e passar 20 cm para 0,2 m." } }),
 ]);
 q(50, 2, "Um pequeno veículo está preso à extremidade livre de uma mola de constante elástica k = 5,0 · 10² N/m. Determine a energia potencial elástica armazenada pelo sistema quando a mola for distendida de 5,0 cm.", [
   N("", "", 0.625, "J", ["x = 5 cm = 0,05 m", "Epe = k · x² / 2", "Epe = 5 · 10² · (0,05)² / 2", "Epe = 500 · 0,0025 / 2", "Epe = 0,625 J"], "O erro mais comum é esquecer de passar cm para m e de elevar ao quadrado. 0,05² = 0,0025.", { e: { "1250": "Você usou 5 em vez de 0,05 m e não elevou ao quadrado." } }),
@@ -404,19 +404,19 @@ q(65, 2, "Uma mola de constante elástica k = 1,0 × 10² N/m encontra-se na pos
   N("", "", 0.4, "m", ["x = 20 cm = 0,2 m", "Em = Em₀", "Ep = Epe₀", "m · g · h = k · x² / 2", "0,5 · 10 · h = 1 · 10² · (0,2)² / 2", "5 · h = 2", "h = 0,4 m"], "A mola comprimida guarda energia. Quando solta, essa energia joga o corpo para cima e vira energia de altura."),
 ]);
 q(66, 2, "Em um sistema conservativo, o gráfico representa a energia cinética de uma partícula em função da distância percorrida. Sabendo que a energia mecânica total do sistema é igual a 220 J, determine a energia potencial da partícula nas posições 0, 2 m, 4 m e 6 m.", [
-  N("0", "posição 0 (Ec = 100 J)", 120, "J", ["Em = Ec + Ep", "100 + Ep = 220", "Ep = 120 J"], "A soma das duas energias é sempre 220 J. Lê a cinética no gráfico e vê quanto falta."),
-  N("2", "posição 2 m (Ec = 0)", 220, "J", ["Em = Ec + Ep", "0 + Ep = 220", "Ep = 220 J"], "Onde a cinética é zero, toda a energia é potencial."),
-  N("4", "posição 4 m (Ec = 250 J)", -30, "J", ["Em = Ec + Ep", "250 + Ep = 220", "Ep = −30 J"], "Aqui a cinética passa de 220 J. Para a soma dar 220, a potencial fica negativa."),
-  N("6", "posição 6 m (Ec = 50 J)", 170, "J", ["Em = Ec + Ep", "50 + Ep = 220", "Ep = 170 J"], "Mesma ideia: 220 menos a cinética."),
+  N("0", "posição 0 (Ec = 100 J)", 120, "J", ["Em = Ec + Ep", "220 = 100 + Ep", "Ep = 120 J"], "A soma das duas energias é sempre 220 J. Lê a cinética no gráfico e vê quanto falta."),
+  N("2", "posição 2 m (Ec = 0)", 220, "J", ["Em = Ec + Ep", "220 = 0 + Ep", "Ep = 220 J"], "Onde a cinética é zero, toda a energia é potencial."),
+  N("4", "posição 4 m (Ec = 250 J)", -30, "J", ["Em = Ec + Ep", "220 = 250 + Ep", "Ep = −30 J"], "Aqui a cinética passa de 220 J. Para a soma dar 220, a potencial fica negativa."),
+  N("6", "posição 6 m (Ec = 50 J)", 170, "J", ["Em = Ec + Ep", "220 = 50 + Ep", "Ep = 170 J"], "Mesma ideia: 220 menos a cinética."),
 ], "", { xl: "d (m)", yl: "Ec (J)", p: [[0, 100], [0.5, 94], [1, 75], [1.5, 44], [2, 0], [2.5, 109], [3, 188], [3.5, 234], [4, 250], [4.5, 238], [5, 200], [5.5, 138], [6, 50]], xt: [0, 1, 2, 3, 4, 5, 6], yt: [50, 100, 150, 200, 250] });
 q(67, 2, "O gráfico mostra a variação da energia cinética de um móvel de massa m = 5,0 kg em função da distância percorrida em um campo conservativo. Sabendo que a energia mecânica total do sistema vale 50 J, determine a velocidade do móvel nas posições 2 m, 8 m e 12 m e a energia potencial nas posições 0, 2 m, 8 m e 12 m.", [
   N("a1", "velocidade na posição 2 m (Ec = 10 J)", 2, "m/s", ["Ec = m · v² / 2", "10 = 5 · v² / 2", "v² = 4", "v = 2 m/s"], "Lê a energia cinética no gráfico e isola a velocidade."),
   N("a2", "velocidade na posição 8 m (Ec = 20 J)", 2.828, "m/s", ["Ec = m · v² / 2", "20 = 5 · v² / 2", "v² = 8", "v = √8", "v = 2√2 m/s (≈ 2,8 m/s)"], "√8 não é exata. Fatorando: √8 = 2√2."),
   N("a3", "velocidade na posição 12 m (Ec = 0)", 0, "m/s", ["Ec = m · v² / 2", "0 = 5 · v² / 2", "v = 0 m/s"], "Energia cinética zero quer dizer parado."),
-  N("b1", "energia potencial na posição 0 (Ec = 0)", 50, "J", ["Em = Ep + Ec = 50 J", "Ep + 0 = 50", "Ep = 50 J"], "A soma é sempre 50 J."),
-  N("b2", "energia potencial na posição 2 m", 40, "J", ["Ep + Ec = 50", "Ep + 10 = 50", "Ep = 40 J"], "50 menos a cinética (10 J)."),
-  N("b3", "energia potencial na posição 8 m", 30, "J", ["Ep + Ec = 50", "Ep + 20 = 50", "Ep = 30 J"], "50 menos a cinética (20 J)."),
-  N("b4", "energia potencial na posição 12 m", 50, "J", ["Ep + Ec = 50", "Ep + 0 = 50", "Ep = 50 J"], "Cinética zero: tudo é potencial."),
+  N("b1", "energia potencial na posição 0 (Ec = 0)", 50, "J", ["Em = Ec + Ep", "50 = 0 + Ep", "Ep = 50 J"], "A soma é sempre 50 J."),
+  N("b2", "energia potencial na posição 2 m", 40, "J", ["Em = Ec + Ep", "50 = 10 + Ep", "Ep = 40 J"], "50 menos a cinética (10 J)."),
+  N("b3", "energia potencial na posição 8 m", 30, "J", ["Em = Ec + Ep", "50 = 20 + Ep", "Ep = 30 J"], "50 menos a cinética (20 J)."),
+  N("b4", "energia potencial na posição 12 m", 50, "J", ["Em = Ec + Ep", "50 = 0 + Ep", "Ep = 50 J"], "Cinética zero: tudo é potencial."),
 ], "", { xl: "d (m)", yl: "Ec (J)", p: [[0, 0], [2, 10], [6, 10], [8, 20], [12, 0]], xt: [0, 2, 4, 6, 8, 10, 12], yt: [10, 20] });
 q(68, 2, "Um menino desce um escorregador de 10 m de altura, partindo do repouso. Considerando g = 10 m/s² e sabendo que 50% da energia mecânica é dissipada durante o movimento, determine a velocidade com que o menino chega à base do escorregador.", [
   N("", "", 10, "m/s", ["Em₀ = Ep = m · g · h = m · 10 · 10 = 100 · m", "Em = 50% de Em₀ = 50 · m", "Ec = 50 · m", "m · v² / 2 = 50 · m", "v² = 100", "v = 10 m/s"], "Metade da energia se perde no atrito. Só a outra metade vira velocidade. A massa corta.", { e: { "14.142": "Esse é o valor sem perda. Só 50% da energia vira velocidade: v² = 100 → v = 10 m/s." } }),
@@ -432,11 +432,11 @@ q(71, 2, "Um bloco de 2,0 kg é abandonado do repouso no topo de um plano inclin
   N("b", "a intensidade da força de atrito", 3, "N", ["τ = F · d · cos α", "−75 = Fat · 25 · cos 180°", "−75 = Fat · 25 · (−1)", "Fat = 3 N"], "Agora usa a fórmula do trabalho com a distância da rampa (25 m) e ângulo 180°, porque o atrito é contra o movimento."),
 ]);
 q(72, 2, "Um projétil de massa 10 g atinge perpendicularmente uma parede vertical com velocidade de 1,0 × 10² m/s e penetra 10 cm antes de parar. Admitindo que a força exercida pela parede sobre o projétil seja constante, determine sua intensidade.", [
-  N("", "", 500, "N", ["m = 10 g = 0,01 kg ; d = 10 cm = 0,1 m", "Ec₀ = m · v₀² / 2 = 0,01 · 100² / 2 = 50 J", "τ = ΔEc = 0 − 50 = −50 J", "τ = F · d · cos 180°", "−50 = F · 0,1 · (−1)", "F = 500 N"], "A parede tira toda a energia de movimento do projétil (50 J) em 0,1 m. Passe g para kg e cm para m."),
+  N("", "", 500, "N", ["m = 10 g = 0,01 kg", "d = 10 cm = 0,1 m", "τ = ΔEc", "τ = m · v² / 2 − m · v₀² / 2", "τ = 0 − 0,01 · 100² / 2", "τ = −50 J", "τ = F · d · cos α", "−50 = F · 0,1 · cos 180°", "−50 = F · 0,1 · (−1)", "F = 500 N"], "A parede tira toda a energia de movimento do projétil (50 J) em 0,1 m. Passe g para kg e cm para m."),
 ]);
 q(73, 2, "Um automóvel de massa 800 kg desloca-se com velocidade de 20 m/s. Ao ser freado, para após percorrer 16 m. Considerando g = 10 m/s², determine:", [
   N("a", "o trabalho realizado pela força de atrito", -160000, "J", ["τ = ΔEc = Ec − Ec₀", "τ = m · v² / 2 − m · v₀² / 2", "τ = 0 − 800 · 20² / 2", "τ = −160000 J"], "O carro para: energia cinética final zero. Toda a energia de movimento foi tirada pelo atrito."),
-  N("c", "o tempo gasto para o veículo parar", 1.6, "s", ["τ = Fa · d · cos 180° → −160000 = Fa · 16 · (−1) → Fa = 10000 N", "Fa = m · a → 10000 = 800 · a → a = 12,5 m/s²", "v = v₀ + a · t", "0 = 20 − 12,5 · t", "t = 1,6 s"], "Primeiro acha a força de atrito, depois a aceleração (que é de freada, por isso entra negativa), e por fim o tempo com v = v₀ + a · t.", { e: { "20": "0 = 20 − 12,5 · t dá t = 20 ÷ 12,5 = 1,6 s." } }),
+  N("c", "o tempo gasto para o veículo parar", 1.6, "s", ["τ = F · d · cos α", "−160000 = Fa · 16 · cos 180°", "−160000 = Fa · 16 · (−1)", "Fa = 10000 N", "Fa = m · a", "10000 = 800 · a", "a = 12,5 m/s² (freando: −12,5)", "v = v₀ + a · t", "0 = 20 − 12,5 · t", "t = 1,6 s"], "Primeiro acha a força de atrito, depois a aceleração (que é de freada, por isso entra negativa), e por fim o tempo com v = v₀ + a · t.", { e: { "20": "0 = 20 − 12,5 · t dá t = 20 ÷ 12,5 = 1,6 s." } }),
 ], "O item b (coeficiente de atrito) foi riscado na apostila e não entra aqui.");
 q(74, 2, "Em um plano inclinado de 30° em relação à horizontal, um bloco de massa m = 1,0 kg é abandonado do repouso a uma altura h = 0,10 m. Sabendo que sua velocidade ao atingir o plano horizontal é v = 1,0 m/s, determine o trabalho realizado pela força de atrito. Dado: g = 10 m/s².", [
   N("", "", -0.5, "J", ["Em₀ = m · g · h = 1 · 10 · 0,1 = 1 J", "Em = m · v² / 2 = 1 · 1² / 2 = 0,5 J", "τ(Fat) = Em − Em₀", "τ(Fat) = 0,5 − 1", "τ(Fat) = −0,5 J"], "Compara a energia do começo (altura) com a do fim (movimento). A diferença foi o atrito que tirou."),
@@ -474,13 +474,13 @@ q(83, 3, "Determine a direção, o sentido e a intensidade do impulso do peso de
   N("", "", 60, "N·s", ["P = m · g = 3 · 10 = 30 N", "I = F · Δt", "I = 30 · 2", "I = 60 N·s", "Direção: vertical", "Sentido: para baixo"], "A força aqui é o peso (30 N). O impulso tem a direção e o sentido do peso: vertical, para baixo."),
 ]);
 q(84, 3, "(FUVEST-SP) Um veículo de massa 0,30 kg parte do repouso e passa a mover-se com aceleração constante. Após 10 s, encontra-se a 40 m da posição inicial. Determine o valor da quantidade de movimento do veículo nesse instante.", [
-  M("", "", ["2,4 kg·m/s", "6,0 kg·m/s", "60 kg·m/s", "120 kg·m/s", "400 kg·m/s"], 0, ["(v + v₀) / 2 = Δs / Δt", "(v + 0) / 2 = 40 / 10", "v = 8 m/s", "Q = m · v", "Q = 0,3 · 8", "Q = 2,4 kg·m/s → alternativa a"], "Primeiro descobre a velocidade final: com aceleração constante, a velocidade média é a metade da soma (v + v₀). Depois multiplica pela massa."),
+  M("", "", ["2,4 kg·m/s", "6,0 kg·m/s", "60 kg·m/s", "120 kg·m/s", "400 kg·m/s"], 0, ["s = s₀ + v₀ · t + a · t² / 2", "40 = 0 + 0 + a · 10² / 2", "40 = 50 · a", "a = 0,8 m/s²", "v = v₀ + a · t", "v = 0 + 0,8 · 10 = 8 m/s", "Q = m · v", "Q = 0,3 · 8", "Q = 2,4 kg·m/s → alternativa a"], "Primeiro acha a aceleração com a função horária (ele sai do repouso, então s₀ = 0 e v₀ = 0). Depois acha a velocidade com v = v₀ + a · t. Por fim, multiplica pela massa."),
 ]);
 q(85, 3, "(UF-RN) A quantidade de movimento de uma partícula de massa 0,4 kg possui módulo igual a 1,2 kg·m/s. Nesse instante, a energia cinética da partícula é, em joules:", [
   M("", "", ["0,8", "1,2", "1,8", "3,0", "9,0"], 2, ["Q = m · v", "1,2 = 0,4 · v", "v = 3 m/s", "Ec = m · v² / 2", "Ec = 0,4 · 3² / 2", "Ec = 1,8 J → alternativa c"], "Duas etapas: acha a velocidade com Q = m · v e depois usa na energia cinética."),
 ]);
 q(86, 3, "(UNAERP-SP) O gráfico representa a variação da quantidade de movimento em função do tempo de um móvel de massa igual a 10 kg. Calcule o trabalho realizado pela força resultante sobre o móvel entre os instantes 20 s e 40 s.", [
-  M("", "", ["2 kJ", "0,5 kJ", "3 kJ", "1,5 kJ", "1,0 kJ"], 3, ["Q = m · v", "100 = 10 · v₂₀ → v₂₀ = 10 m/s", "200 = 10 · v₄₀ → v₄₀ = 20 m/s", "τ = ΔEc = m · v² / 2 − m · v₀² / 2", "τ = 10 · 20² / 2 − 10 · 10² / 2", "τ = 2000 − 500", "τ = 1500 J = 1,5 kJ → alternativa d"], "Lê Q no gráfico (100 em 20 s e 200 em 40 s) e acha as duas velocidades. O trabalho da resultante é quanto a energia cinética mudou."),
+  M("", "", ["2 kJ", "0,5 kJ", "3 kJ", "1,5 kJ", "1,0 kJ"], 3, ["Q = m · v", "100 = 10 · v₂₀ → v₂₀ = 10 m/s", "200 = 10 · v₄₀ → v₄₀ = 20 m/s", "τ = ΔEc", "τ = m · v² / 2 − m · v₀² / 2", "τ = 10 · 20² / 2 − 10 · 10² / 2", "τ = 2000 − 500", "τ = 1500 J = 1,5 kJ → alternativa d"], "Lê Q no gráfico (100 em 20 s e 200 em 40 s) e acha as duas velocidades. O trabalho da resultante é quanto a energia cinética mudou."),
 ], "", { xl: "t (s)", yl: "Q (kg·m/s)", p: [[0, 0], [20, 100], [40, 200]], xt: [0, 20, 40], yt: [100, 200] });
 q(87, 3, "Sobre uma partícula de massa 5,0 kg, que se desloca com velocidade de 20 m/s, passa a atuar uma força constante de intensidade 2,0 × 10² N durante 2,0 s, no mesmo sentido do movimento. Determine o módulo da quantidade de movimento da partícula ao final da ação da força.", [
   N("", "", 500, "kg·m/s", ["I = ΔQ", "F · Δt = Q − Q₀", "200 · 2 = Q − 5 · 20", "400 = Q − 100", "Q = 500 kg·m/s"], "O impulso é quanto a quantidade de movimento muda. Ela começa em 100 e ganha 400."),
@@ -522,7 +522,7 @@ q(97, 3, "Uma bola de tênis de massa m = 0,10 kg é lançada horizontalmente co
 ]);
 q(98, 3, "A intensidade da força resultante que atua sobre uma partícula de massa m = 10 g, inicialmente em repouso, varia com o tempo conforme o gráfico. Determine:", [
   N("a", "o módulo da quantidade de movimento da partícula no instante t = 20 s", 150, "kg·m/s", ["I ≙ área (F × Δt)", "I = (B + b) · h / 2 (trapézio)", "I = (20 + 10) · 10 / 2", "I = 150 N·s", "I = ΔQ → 150 = Q − 0", "Q = 150 kg·m/s"], "A área de 0 a 20 s é um trapézio. Como saiu do repouso, Q é igual ao impulso."),
-  N("b", "a velocidade da partícula no instante t = 10 s", 5000, "m/s", ["m = 10 g = 0,01 kg", "I ≙ área = b · h / 2 = 10 · 10 / 2 = 50 N·s", "I = m · v − m · v₀", "50 = 0,01 · v − 0", "v = 5000 m/s"], "Até 10 s a área é um triângulo. Passe a massa para kg (0,01 kg)."),
+  N("b", "a velocidade da partícula no instante t = 10 s", 5000, "m/s", ["m = 10 g = 0,01 kg", "I ≙ área (F × Δt)", "I = b · h / 2 = 10 · 10 / 2 = 50 N·s", "I = ΔQ", "I = m · v − m · v₀", "50 = 0,01 · v − 0", "v = 5000 m/s"], "Até 10 s a área é um triângulo. Passe a massa para kg (0,01 kg)."),
 ], "", { xl: "t (s)", yl: "F (N)", p: [[0, 0], [10, 10], [20, 10]], xt: [0, 10, 20], yt: [10] });
 q(99, 3, "Um corpo de massa 1,0 kg desloca-se em movimento retilíneo e uniforme. Em determinado trecho de sua trajetória, passa a atuar sobre ele uma força com a mesma direção do movimento, cuja intensidade varia com o tempo conforme o gráfico. Nessas condições, pode-se afirmar que a variação da velocidade Δv do corpo é:", [
   M("", "", ["6,5 m/s", "5,5 m/s", "8,0 m/s", "2,0 m/s", "4,5 m/s"], 1, ["I ≙ área (F × Δt)", "I = 0,4 · 30 / 2 + 0,1 · (−10) / 2", "I = 6 − 0,5 = 5,5 N·s", "I = ΔQ = m · Δv", "5,5 = 1 · Δv", "Δv = 5,5 m/s → alternativa b"], "Dois triângulos: um grande acima do eixo (positivo) e um pequeno abaixo (negativo). Soma com sinal e divide pela massa."),
