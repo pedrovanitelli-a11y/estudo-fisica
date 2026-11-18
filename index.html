@@ -257,15 +257,15 @@ q(22, 1, "Determine o trabalho realizado pela força peso de um corpo de massa m
   N("e", "de A para E", 0, "J", ["A e E estão na mesma altura", "τ = F · d · cos 90°", "τ = 0 J"], "A e E têm a mesma altura. O corpo só anda de lado, a 90° do peso. Trabalho zero."),
 ], "A está 3,0 m acima da linha do chão, onde ficam B (logo abaixo de A), C e D. E está na mesma altura de A, 4,0 m à direita. AC = 5,0 m e AD = 8,0 m (medidos na diagonal).");
 q(23, 1, "Um ponto material de massa m = 2,0 kg é lançado a partir do solo, no ponto A, descrevendo a trajetória ABC (sobe até B, a h = 5,0 m, e volta ao solo em C). Determine o trabalho realizado pela força peso durante os deslocamentos. Considere g = 10 m/s².", [
-  N("a", "de A para B", -100, "J", ["P = m · g = 2 · 10 = 20 N", "τ = P · h · cos 180°", "τ = 20 · 5 · (−1)", "τ = −100 J"], "Na subida o peso aponta para baixo e o corpo vai para cima. Trabalho negativo."),
-  N("b", "de B para C", 100, "J", ["τ = P · h · cos 0°", "τ = 20 · 5 · 1", "τ = 100 J"], "Na descida o peso e o movimento vertical têm o mesmo sentido. Trabalho positivo."),
+  N("a", "de A para B", -100, "J", ["P = m · g = 2 · 10 = 20 N", "τ = F · d · cos α", "τ = 20 · 5 · cos 180°", "τ = 20 · 5 · (−1)", "τ = −100 J"], "Na subida o peso aponta para baixo e o corpo vai para cima. Trabalho negativo."),
+  N("b", "de B para C", 100, "J", ["τ = F · d · cos α", "τ = 20 · 5 · cos 0°", "τ = 20 · 5 · 1", "τ = 100 J"], "Na descida o peso e o movimento vertical têm o mesmo sentido. Trabalho positivo."),
   N("c", "de A para C", 0, "J", ["τ = τ(AB) + τ(BC)", "τ = −100 + 100", "τ = 0 J"], "A e C estão na mesma altura (o solo). O que o peso tirou na subida, devolveu na descida."),
 ]);
 q(24, 1, "Um corpo de massa m = 2 kg é lançado horizontalmente a partir do ponto A, passando sucessivamente pelos pontos B, C e D (no solo). Sabendo que g = 10 m/s², determine o trabalho realizado pela força peso entre os pontos:", [
-  N("a", "A e B", 20, "J", ["P = m · g = 2 · 10 = 20 N", "τ = P · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De A (4 m) até B (3 m) o corpo desce 1 m. Usa só o quanto desceu."),
-  N("b", "B e C", 20, "J", ["τ = P · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De B (3 m) até C (2 m) desce 1 m."),
-  N("c", "C e D", 40, "J", ["τ = P · d · cos α", "τ = 20 · 2 · 1", "τ = 40 J"], "De C (2 m) até D (solo) desce 2 m."),
-  N("d", "A e D", 80, "J", ["τ = P · d · cos α", "τ = 20 · 4 · 1", "τ = 80 J"], "De A até o solo desce 4 m. Também dá para somar: 20 + 20 + 40."),
+  N("a", "A e B", 20, "J", ["P = m · g = 2 · 10 = 20 N", "τ = F · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De A (4 m) até B (3 m) o corpo desce 1 m. Usa só o quanto desceu."),
+  N("b", "B e C", 20, "J", ["τ = F · d · cos α", "τ = 20 · 1 · 1", "τ = 20 J"], "De B (3 m) até C (2 m) desce 1 m."),
+  N("c", "C e D", 40, "J", ["τ = F · d · cos α", "τ = 20 · 2 · 1", "τ = 40 J"], "De C (2 m) até D (solo) desce 2 m."),
+  N("d", "A e D", 80, "J", ["τ = F · d · cos α", "τ = 20 · 4 · 1", "τ = 80 J"], "De A até o solo desce 4 m. Também dá para somar: 20 + 20 + 40."),
 ], "Alturas em relação ao solo: A = 4 m, B = 3 m, C = 2 m, D = 0.");
 q(25, 1, "Uma força F atua sobre um corpo na mesma direção e no mesmo sentido do deslocamento. O gráfico mostra a intensidade de F em função da posição s. Determine o trabalho realizado pela força F quando o corpo sofre um deslocamento de s = 0 até s = 10 m e, em seguida, de s = 10 m até s = 20 m.", [
   N("1", "de s = 0 até s = 10 m", 100, "J", ["τ ≙ área (F × d)", "τ = b · h (retângulo)", "τ = 10 · 10", "τ = 100 J"], "Quando tem gráfico de força por distância, o trabalho é a área embaixo da linha. De 0 a 10 m é um retângulo."),
